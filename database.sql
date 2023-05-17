@@ -8,3 +8,15 @@ CREATE TABLE "user" (
     "username" VARCHAR (80) UNIQUE NOT NULL,
     "password" VARCHAR (1000) NOT NULL
 );
+
+CREATE TABLE "user_presets" (
+	"id" SERIAL PRIMARY KEY,
+	"user_id" INT REFERENCES "user"("id") NOT NULL,
+	"user_delay.json" TEXT,
+	"name" VARCHAR (100),
+	"description" VARCHAR (1000),
+	"created_at" TIMESTAMP DEFAULT NOW(),
+	"updated_at" TIMESTAMP DEFAULT NOW(),
+	"public" BOOLEAN NOT NULL,
+	"remixed_from" INT REFERENCES "user_presets"("id") NOT NULL
+);
