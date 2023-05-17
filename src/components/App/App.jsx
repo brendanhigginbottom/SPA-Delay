@@ -69,6 +69,14 @@ function App() {
             <InfoPage />
           </ProtectedRoute>
 
+          <ProtectedRoute
+            // loged in shows MainView else shows LoginPage
+            exact
+            path="/main"
+          >
+            <MainView />
+          </ProtectedRoute>
+
           <Route
             exact
             path="/login"
