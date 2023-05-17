@@ -13,12 +13,13 @@ import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
-import AboutPage from '../AboutPage/AboutPage';
-import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
-import LandingPage from '../LandingPage/LandingPage';
-import LoginPage from '../LoginPage/LoginPage';
-import RegisterPage from '../RegisterPage/RegisterPage';
+import AboutPage from '../AboutPage/AboutPage.jsx';
+import UserPage from '../UserPage/UserPage.jsx';
+import InfoPage from '../InfoPage/InfoPage.jsx';
+import LandingPage from '../LandingPage/LandingPage.jsx';
+import LoginPage from '../LoginPage/LoginPage.jsx';
+import RegisterPage from '../RegisterPage/RegisterPage.jsx';
+import MainView from '../MainView/MainView.jsx';
 
 import './App.css';
 
