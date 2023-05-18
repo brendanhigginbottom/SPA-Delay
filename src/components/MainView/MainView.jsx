@@ -2,13 +2,13 @@
 const { createDevice } = require('@rnbo/js');
 // Storing init delay in state
 import { useState, useEffect } from 'react';
-let device;
+// let device;
 
 
 function MainView() {
     const [delayJson, setDelayJson] = useState({});
     const [color, setColor] = useState(0);
-    
+    let [device, setDevice] = useState({})
 
     //Creating device (delay line) from the exported JSON file
     const setup = async() => {
@@ -28,6 +28,7 @@ function MainView() {
         console.log(delayJson);
 
         device = await createDevice({ context, patcher });
+        setDevice(device);
         console.log(device);
 
         //Not sure what destination will end up being, noticing RNBO plays thru comp speakers even if I have
@@ -52,11 +53,11 @@ function MainView() {
     useEffect(() => {
         setup();
       }, []);
-    useEffect(() => {
-        if(device) {
-            device.parametersById.setColor(color);
-        }
-    }, [color]);
+    // useEffect(() => {
+    //     if(device) {
+    //         device.parametersById.setColor(color);
+    //     }
+    // }, [color]);
     console.log(delayJson);
     console.log(device);
     console.log(color);
@@ -74,6 +75,7 @@ function MainView() {
     }
 
     const handleColorChange = (e) => {
+        // const color = device.parametersById.get("color");
         setColor(e.target.value);
         console.log(color);
     }
