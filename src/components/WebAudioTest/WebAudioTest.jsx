@@ -13,20 +13,33 @@ function WebAudioTest() {
         if(!source.current) {
             source.current = audioContext.createMediaElementSource(audioRef.current);
             source.current.connect(audioContext.destination);
+            console.log(audioContext);
         }
     };
+
+    const handleAudioSelection = (e) => {
+        setFile(e.target.value);
+        console.log(file);
+    }
    
     return (
         <div>
+            <label htmlFor="audio">Choose a sound:</label>
+
+            <select onChange={handleAudioSelection} name="audio" id="audio">
+                <option>Select a sound</option>
+                <option value="./export/media/SPADelayTest.mp3">Test 1</option>
+                <option value="./export/media/SPADelayTest2.mp3">Test 2</option>
+            </select>
             {/* <input
-                type="file"
-                onChange={({target: {files}}) => files[0] && setFile[files[0]]}
-            /> */}
+            //     type="dropdown"
+            //     onChange={({target: {files}}) => files[0] && setFile[files[0]]}
+            // /> */}
             {/* {file &&  ( */}
                     <audio  
                         ref={audioRef}
                         onPlay={handleAudioPlay}
-                        src={"./export/media/SPADelayTest.mp3"}
+                        src={file}
                         controls
                         type="audio/mpeg"
                     />
