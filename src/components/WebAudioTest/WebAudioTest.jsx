@@ -1,30 +1,38 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 function WebAudioTest() {
+    const [file, setFile] = useState(null);
 
-     // Create instance of audio context
-     const AudioContext = window.AudioContext || window.webkitAudioContext;
-     const audioContext = new AudioContext();
+    //useRef to get audio file
+    const audioRef = useRef();
+    const source = useRef();
 
-    const setup = () => {
-
-    // get the audio element
-    const audioElement = document.querySelector("audio")
-    console.log(document.querySelector("audio"));
-    // create new MediaElementAudioSourceNode
-    const track = audioContext.createMediaElementSource(audioElement);
+    // onClick for audio playback
+    const handleAudioPlay = () => {
+        let audioContext = new AudioContext();
+        if(!source.current) {
+            source.current = audioContext.createMediaElementSource(audioRef.current);
+            source.current.connect(audioContext.destination);
+        }
     };
-
-    useEffect(() => {
-        setup();
-    }, [])
-
    
     return (
-        <>
-            <h1>Test 123 ABC</h1>
-            <audio id="audio" src="./export/media/SPADelayTest.mp3" />
-        </>
+        <div>
+            {/* <input
+                type="file"
+                onChange={({target: {files}}) => files[0] && setFile[files[0]]}
+            /> */}
+            {/* {file &&  ( */}
+                    <audio  
+                        ref={audioRef}
+                        onPlay={handleAudioPlay}
+                        src={"./export/media/SPADelayTest.mp3"}
+                        controls
+                        type="audio/mpeg"
+                    />
+            {/* // )} */}
+            <audio src="./export/media/SPADelayTest.mp3" />
+        </div>
     );
 }
 
