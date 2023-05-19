@@ -20,6 +20,7 @@ import LandingPage from '../LandingPage/LandingPage.jsx';
 import LoginPage from '../LoginPage/LoginPage.jsx';
 import RegisterPage from '../RegisterPage/RegisterPage.jsx';
 import MainView from '../MainView/MainView.jsx';
+import WebAudioTest from '../WebAudioTest/WebAudioTest';
 
 import './App.css';
 
@@ -49,6 +50,13 @@ function App() {
             <AboutPage />
           </Route>
 
+          <ProtectedRoute 
+            exact 
+            path="/test"
+          >
+            <WebAudioTest />
+          </ProtectedRoute>
+
           {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
@@ -69,13 +77,13 @@ function App() {
             <InfoPage />
           </ProtectedRoute>
 
-          <ProtectedRoute
+          {/* <ProtectedRoute
             // loged in shows MainView else shows LoginPage
             exact
             path="/main"
           >
             <MainView />
-          </ProtectedRoute>
+          </ProtectedRoute> */}
 
           <Route
             exact
