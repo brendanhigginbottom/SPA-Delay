@@ -3,12 +3,19 @@ const { createDevice } = require('@rnbo/js');
 // Storing init delay in state
 import { useState, useEffect } from 'react';
 // let device;
+const audioContext = new AudioContext();
+const bufferId = "Test"
+
 
 
 function MainView() {
     const [delayJson, setDelayJson] = useState({});
     const [color, setColor] = useState(0);
-    let [device, setDevice] = useState({})
+    let [device, setDevice] = useState({});
+    
+    //Creating WebAudio AudioContext
+    let WAContext = window.AudioContext || window.webkitAudioContext;
+    let context = new WAContext();
 
     //Creating device (delay line) from the exported JSON file
     const setup = async() => {
@@ -23,12 +30,11 @@ function MainView() {
         let patcher = await rawPatcher.json();
         // Setting delay in state with content of JSON file
         //! Will need to restore to JSON format when capturing user preset
-        setDelayJson(patcher);
+        setDelayJson(rawPatcher);
         console.log(patcher);
-        console.log(delayJson);
 
         device = await createDevice({ context, patcher });
-        setDevice(device);
+        await setDevice(device);
         console.log(device);
 
         //Not sure what destination will end up being, noticing RNBO plays thru comp speakers even if I have
@@ -45,28 +51,30 @@ function MainView() {
 
         console.log(device.parametersById.get("color"))
         const color = device.parametersById.get("color");
+        console.log(color);
+        setColor(Number(device.parameters[3].value));
         console.log(color.value);
         color.value = 2;
-        console.log(color.value);
+        console.log(color.min, color.max);
+        console.log(device.parameters[3].value);
+        
     };
+
+    
 
     useEffect(() => {
         setup();
       }, []);
+   
     // useEffect(() => {
     //     if(device) {
-    //         device.parametersById.setColor(color);
+    //         device.parameters[3].value = color;
     //     }
     // }, [color]);
     console.log(delayJson);
     console.log(device);
     console.log(color);
-    // console.log(device.parametersById.get("color"));
     
-
-    //Creating WebAudio AudioContext
-    let WAContext = window.AudioContext || window.webkitAudioContext;
-    let context = new WAContext();
 
     //Resuming audiocontext with user gesture (the onClick)
     const resumeAudioContext = () => {
@@ -75,10 +83,12 @@ function MainView() {
     }
 
     const handleColorChange = (e) => {
-        // const color = device.parametersById.get("color");
-        setColor(e.target.value);
+        console.log(device.parameters[3]); 
+        setColor(Number(e.target.value));
         console.log(color);
     }
+
+
 
     return (
         <>
