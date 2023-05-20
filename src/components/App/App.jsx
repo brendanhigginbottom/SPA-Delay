@@ -77,13 +77,13 @@ function App() {
             <InfoPage />
           </ProtectedRoute>
 
-          {/* <ProtectedRoute
+          <ProtectedRoute
             // loged in shows MainView else shows LoginPage
             exact
             path="/main"
           >
             <MainView />
-          </ProtectedRoute> */}
+          </ProtectedRoute>
 
           <Route
             exact
