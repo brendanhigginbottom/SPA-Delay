@@ -34,14 +34,13 @@ function WebAudioTest() {
         const playButton = document.querySelector('#playButton');
         console.log(playButton.dataset.playing)
 
-        playButton.addEventListener(
-            "click",
-            () => {
+        // playButton.addEventListener(
+        //     "click",
+        //     () => {
                 // Check if context is in suspended state
                 // if (audioContext.state === "suspended") {
                 //     audioContext.resume();
                 // }
-
 
                 //Play or pause depending on state
                 if (playButton.dataset.playing === "false") {
@@ -52,9 +51,9 @@ function WebAudioTest() {
                     audioRef.current.pause();
                     playButton.dataset.playing = "false";
                 }
-            },
-            false
-        );
+        //     },
+        //     false
+        // );
 
     }
 
