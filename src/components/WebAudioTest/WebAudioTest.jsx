@@ -1,73 +1,62 @@
 import { useState, useEffect, useRef } from 'react';
-const { createDevice } = require('@rnbo/js');
+let audioContext;
+
 
 function WebAudioTest() {
     const [file, setFile] = useState(null);
-    const [delayJson, setDelayJson] = useState({});
-    const [color, setColor] = useState(0);
-    let [device, setDevice] = useState({});
-
 
     //useRef to get audio file
     const audioRef = useRef();
     const source = useRef();
+    console.log(audioContext);
 
     // onClick for audio playback
     const handleAudioPlay = () => {
-        let audioContext = new AudioContext();
-        if (!source.current) {
-            source.current = audioContext.createMediaElementSource(audioRef.current);
-            source.current.connect(audioContext.destination);
-            console.log(audioContext);
-        }
-        //Creating device (delay line) from the exported JSON file
-        const setup = async () => {
-            //Creating WebAudio AudioContext
-            let WAContext = window.AudioContext || window.webkitAudioContext;
-            let context = new WAContext();
-            const patchExportURL = "/export/rnbo.filterdelay.json";
-            let rawPatcher = await fetch(patchExportURL, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                }
+        if (audioContext === undefined) {
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            let audioContext = new AudioContext();
+            console.log(audioContext.state);
+            if (!source.current) {
+                source.current = audioContext.createMediaElementSource(audioRef.current);
+                source.current.connect(audioContext.destination);
+                // audioRef.current.play();
+                console.log(audioContext);
+                console.log(audioContext.state);
             }
-            );
-            let patcher = await rawPatcher.json();
-            // Setting delay in state with content of JSON file
-            //! Will need to restore to JSON format when capturing user preset
-            setDelayJson(rawPatcher);
-            console.log(patcher);
-
-            device = await createDevice({ context, patcher });
-            await setDevice(device);
-            console.log(device);
-
-            //Not sure what destination will end up being, noticing RNBO plays thru comp speakers even if I have
-            //headphones connected
-            device.node.connect(source.current);
-            console.log(device.node);
-            console.log(context.destination);
-
-            //logging parameters of device
-            device.parameters.forEach(parameter => {
-                console.log(parameter.id);
-                console.log(parameter.name);
-            })
-
-            console.log(device.parametersById.get("color"))
-            const color = device.parametersById.get("color");
-            console.log(color);
-            setColor(Number(device.parameters[3].value));
-            console.log(color.value);
-            color.value = 2;
-            console.log(color.min, color.max);
-            console.log(device.parameters[3].value);
-
-        };
-        setup();
-
+            playEventListener();
+        } else {
+            playEventListener();
+        }
     };
+
+    const playEventListener = (e) => {
+        // Select play button
+        const playButton = document.querySelector('#playButton');
+        console.log(playButton.dataset.playing)
+
+        playButton.addEventListener(
+            "click",
+            () => {
+                // Check if context is in suspended state
+                // if (audioContext.state === "suspended") {
+                //     audioContext.resume();
+                // }
+
+
+                //Play or pause depending on state
+                if (playButton.dataset.playing === "false") {
+                    audioRef.current.play();
+                    playButton.dataset.playing = "true";
+                    console.log(playButton.dataset.playing);
+                } else if (playButton.dataset.playing === "true") {
+                    audioRef.current.pause();
+                    playButton.dataset.playing = "false";
+                }
+            },
+            false
+        );
+
+    }
 
     const handleAudioSelection = (e) => {
         setFile(e.target.value);
@@ -86,15 +75,28 @@ function WebAudioTest() {
             {file ? (
                 <audio
                     ref={audioRef}
-                    onPlay={handleAudioPlay}
+
                     src={file}
-                    controls
                     type="audio/mpeg"
                 />
+
             ) :
                 <></>
             }
+            {file ? (
+                <button
+                    id="playButton"
+                    data-playing="false"
+                    role="switch"
+                    aria-checked="false"
+                    onClick={handleAudioPlay}
 
+                >Play/Pause
+                </button>
+
+            ) :
+                <></>
+            }
         </div>
     );
 }
