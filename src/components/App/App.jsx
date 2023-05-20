@@ -20,7 +20,9 @@ import LandingPage from '../LandingPage/LandingPage.jsx';
 import LoginPage from '../LoginPage/LoginPage.jsx';
 import RegisterPage from '../RegisterPage/RegisterPage.jsx';
 import MainView from '../MainView/MainView.jsx';
-import WebAudioTest from '../WebAudioTest/WebAudioTest';
+import WebAudioTest from '../WebAudioTest/WebAudioTest.jsx';
+import WebAudioTest2 from '../WebAudioTest2/WebAudioTest2.jsx';
+import WebAudioTest3 from '../WebAudioTest3/WebAudioTest3.jsx';
 
 import './App.css';
 
@@ -55,6 +57,18 @@ function App() {
             path="/test"
           >
             <WebAudioTest />
+          </ProtectedRoute>
+          <ProtectedRoute 
+            exact 
+            path="/test2"
+          >
+            <WebAudioTest2 />
+          </ProtectedRoute>
+          <ProtectedRoute 
+            exact 
+            path="/test3"
+          >
+            <WebAudioTest3 />
           </ProtectedRoute>
 
           {/* For protected routes, the view could show one of several things on the same route.

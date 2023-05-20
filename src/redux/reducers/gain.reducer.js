@@ -1,4 +1,4 @@
-const gainReducer = (state = -.9, action) => {
+const gainReducer = (state = 0, action) => {
     switch (action.type) {
       case 'SET_GAIN':
         return action.payload;

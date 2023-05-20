@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import makeGainContext from './makeGainContext';
 
 let audioContext;
 
 
-function WebAudioTest() {
+function WebAudioTest3() {
     const [file, setFile] = useState(null);
     // const [gain, setGain] = useState(3);
     const [gainNode, setGainNode] = useState({});
@@ -17,27 +18,36 @@ function WebAudioTest() {
     //useRef to get audio file
     const audioRef = useRef();
     const source = useRef();
-    console.log(audioContext);
+    
 
     // onClick for audio playback
-    const handleAudioPlay = () => {
+    const handleAudioPlay = (gain) => {
         if (audioContext === undefined) {
             const AudioContext = window.AudioContext || window.webkitAudioContext;
             let audioContext = new AudioContext();
+            console.log(audioContext);
             console.log(audioContext.state);
             if (!source.current) {
                 source.current = audioContext.createMediaElementSource(audioRef.current);
                 source.current.connect(audioContext.destination);
             
-                const gainNode = audioContext.createGain();
+                // const gainNode = makeGainContext(audioContext);
                 // console.log(gainNode.gain.value);
                 // console.log(gainNode.gain);
                 // gainNode.gain.value = 50;
                 // console.log(gainNode.gain.value);
                 // console.log(gainNode.gain);
                 
-                console.log(gainNode.gain.value);
-                // setGain();
+                // console.log(gainNode.gain.value);
+                // if (isFinite(gain)) {
+                //     gainNode.gain.value = gain;
+                // } else {
+                //     console.log('gain was not finite');
+                // }
+
+               const gainNode = makeGainContext(audioContext, gain);
+               console.log(gainNode.gain.value);
+                
                 source.current.connect(gainNode).connect(audioContext.destination);
                 console.log(audioContext);
                 console.log(audioContext.state);
@@ -71,22 +81,18 @@ function WebAudioTest() {
     }
 
     const handleGainChange = (e) => {
-        console.log(Number(e.target.value));
         const gainForReducer = Number(e.target.value)
+        console.log(isFinite(Number(e.target.value)));
         console.log(gain);
         dispatch({
             type: 'SET_GAIN',
             payload: gainForReducer
         });
-        console.log(gain);
-    }
-
-    const setGain = () => {
-        gainNode.gain.value = gain;
     }
 
     return (
         <div>
+            <h1>Test 3</h1>
             {/* Create file selector */}
             <label htmlFor="audio">Choose a sound:</label>
             <select onChange={handleAudioSelection} name="audio" id="audio">
@@ -124,8 +130,8 @@ function WebAudioTest() {
                     <input 
                         type="range"
                         id="volume"
-                        min="-50"
-                        max="50"
+                        min="0"
+                        max="2"
                         step="0.01"
                         onChange={handleGainChange}
                     /> 
@@ -139,4 +145,4 @@ function WebAudioTest() {
     );
 }
 
-export default WebAudioTest;
+export default WebAudioTest3;
