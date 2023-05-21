@@ -21,7 +21,7 @@ function WebAudioTest3() {
     
 
     // onClick for audio playback
-    const handleAudioPlay = (gain) => {
+    const handleAudioPlay = () => {
         if (audioContext === undefined) {
             const AudioContext = window.AudioContext || window.webkitAudioContext;
             let audioContext = new AudioContext();
@@ -130,8 +130,8 @@ function WebAudioTest3() {
                     <input 
                         type="range"
                         id="volume"
-                        min="0"
-                        max="2"
+                        min="-50"
+                        max="50"
                         step="0.01"
                         onChange={handleGainChange}
                     /> 

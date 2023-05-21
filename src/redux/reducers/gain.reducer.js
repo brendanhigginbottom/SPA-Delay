@@ -7,7 +7,7 @@ const gainReducer = (state = 0, action) => {
     }
   };
   
-  // user will be on the redux state at:
-  // state.user
+  // gain will be on the redux state at:
+  // state.gain
   export default gainReducer;
   
