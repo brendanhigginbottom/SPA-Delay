@@ -1,18 +1,20 @@
 import { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import setup from './device';
 
 let audioContext;
 
 
-function WebAudioTest() {
+function WebAudioTest2() {
     const [file, setFile] = useState(null);
     // const [gain, setGain] = useState(3);
     const [gainNode, setGainNode] = useState({});
+    const [deviceNode, setDeviceNode] = useState([]);
 
     //redux
     const dispatch = useDispatch();
     const gain = useSelector(store => store.gain);
-   
+    
 
     //useRef to get audio file
     const audioRef = useRef();
@@ -22,23 +24,25 @@ function WebAudioTest() {
     // onClick for audio playback
     const handleAudioPlay = () => {
         if (audioContext === undefined) {
-            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            let AudioContext = window.AudioContext || window.webkitAudioContext;
             let audioContext = new AudioContext();
             console.log(audioContext.state);
             if (!source.current) {
                 source.current = audioContext.createMediaElementSource(audioRef.current);
                 source.current.connect(audioContext.destination);
             
-                const gainNode = audioContext.createGain();
+                // const gainNode = audioContext.createGain();
                 // console.log(gainNode.gain.value);
                 // console.log(gainNode.gain);
                 // gainNode.gain.value = 50;
                 // console.log(gainNode.gain.value);
                 // console.log(gainNode.gain);
                 
-                console.log(gainNode.gain.value);
+                // console.log(gainNode.gain.value);
                 // setGain();
-                source.current.connect(gainNode).connect(audioContext.destination);
+                // let deviceNode = setup(audioContext);
+                console.log(deviceNode);
+                // source.current.connect(deviceNode).connect(audioContext.destination);
                 console.log(audioContext);
                 console.log(audioContext.state);
             }
@@ -47,6 +51,10 @@ function WebAudioTest() {
             playEventListener();
         }
     };
+
+    // useEffect(() => {
+    //     setup(audioContext).then((res) => setDeviceNode(res));
+    // }, [audioContext]);
 
     const playEventListener = (e) => {
         // Select play button
@@ -139,4 +147,4 @@ function WebAudioTest() {
     );
 }
 
-export default WebAudioTest;
+export default WebAudioTest2;

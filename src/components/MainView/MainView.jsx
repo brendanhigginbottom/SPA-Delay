@@ -34,13 +34,14 @@ function MainView() {
         console.log(patcher);
 
         device = await createDevice({ context, patcher });
-        await setDevice(device);
+        // await setDevice(device);
         console.log(device);
+        console.log(device.node);
 
         //Not sure what destination will end up being, noticing RNBO plays thru comp speakers even if I have
         //headphones connected
         device.node.connect(context.destination);
-        console.log(device.node);
+        
         console.log(context.destination);
 
         //logging parameters of device
