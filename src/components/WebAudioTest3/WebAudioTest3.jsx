@@ -58,26 +58,39 @@ function WebAudioTest3() {
 
     // set filter 
     const handleFilterChange = (e) => {
-        const filterForReducer = Number(e.target.value);
+        const filterNumValue = Number(e.target.value);
+        const filterNames = [
+            'None',
+            'LP',
+            'HP',
+            'BP',
+            'Notch'
+        ];
+        const filterEnumForReducer = filterNames[filterNumValue]
         dispatch({
             type: 'SET_FILTER',
-            payload: filterForReducer,
+            payload: filterEnumForReducer,
         })
     }
 
-    // Display filter text
-    const handleFilterText = () => {
-        const filterNames = [
-            'None',
-            'Low Pass',
-            'High Pass',
-            'Band Pass',
-            'Notch'
-        ];
+    //! Return to this for QoL
+    // Display filter text 
+    // This is necessary because I need to pass abbreviations
+    // to enumValue on delay but want user to see full name
+    // const handleFilterText = () => {
+    //     const filterNumValue = Number(document.querySelector('#filter').value);
+    //     console.log(filterNumValue)
+    //     const filterNames = [
+    //         'None',
+    //         'Low Pass',
+    //         'High Pass',
+    //         'Band Pass',
+    //         'Notch'
+    //     ];
 
-        return filterNames[filter];
+    //     return filterNames[filterNumValue];
 
-    }
+    // }
 
     return (
         <div>
@@ -140,9 +153,10 @@ function WebAudioTest3() {
                         min="0" 
                         max="4"
                         step="1"
+                        defaultValue={0}
                         onChange={handleFilterChange}
                     /> 
-                    <p>Filter type: {handleFilterText()}</p>
+                    <p>Filter type: {filter}</p>
                 </div>
 
             ) :
