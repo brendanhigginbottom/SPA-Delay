@@ -5,6 +5,7 @@ import user from './user.reducer';
 // Delay parameter value reducers
 import color from './color.reducer';
 import filter from './filter.reducer';
+import mix from './mix.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -15,8 +16,9 @@ import filter from './filter.reducer';
 const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in
-  color, // setting value of gain as number
-  filter, // setting value 0-4 corresponding to array of filter options
+  color, // setting parameter value of gain as number
+  filter, // setting string corresponding to array of filter options
+  mix, // setting mix parameter value
 });
 
 export default rootReducer;

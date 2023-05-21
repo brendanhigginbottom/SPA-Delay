@@ -12,6 +12,7 @@ function WebAudioTest3() {
     const dispatch = useDispatch();
     const color = useSelector(store => store.color);
     const filter = useSelector(store => store.filter);
+    const mix = useSelector(store => store.mix);
    
     //useRef to get audio file
     const audioRef = useRef();
@@ -19,9 +20,9 @@ function WebAudioTest3() {
     
     // onClick for audio playback
     const audioPlay = () => {
-        handleAudioPlay(audioContext, source, audioRef, color, filter);
+        handleAudioPlay(audioContext, source, audioRef, color, filter, mix);
         playEventListener();
-    }
+    };
         
 
     const playEventListener = (e) => {
@@ -39,13 +40,13 @@ function WebAudioTest3() {
                     playButton.dataset.playing = "false";
                 }
 
-    }
+    };
 
     // sets file in state
     const handleAudioSelection = (e) => {
         setFile(e.target.value);
         console.log(file);
-    }
+    };
 
     //set value for color
     const handleColorChange = (e) => {
@@ -54,7 +55,7 @@ function WebAudioTest3() {
             type: 'SET_COLOR',
             payload: colorForReducer,
         });
-    }
+    };
 
     // set filter 
     const handleFilterChange = (e) => {
@@ -71,7 +72,7 @@ function WebAudioTest3() {
             type: 'SET_FILTER',
             payload: filterEnumForReducer,
         })
-    }
+    };
 
     //! Return to this for QoL
     // Display filter text 
@@ -91,6 +92,14 @@ function WebAudioTest3() {
     //     return filterNames[filterNumValue];
 
     // }
+
+    const handleMixChange = (e) => {
+        const mixNumValue = Number(e.target.value);
+        dispatch({
+            type: 'SET_MIX',
+            payload: mixNumValue,
+        })
+    };
 
     return (
         <div>
@@ -157,6 +166,24 @@ function WebAudioTest3() {
                         onChange={handleFilterChange}
                     /> 
                     <p>Filter type: {filter}</p>
+                </div>
+
+            ) :
+                <></>
+            }
+            {file ? (
+                <div>
+                    <label htmlFor="mix">Set Color value:</label>
+                    <input 
+                        type="range"
+                        id="mix"
+                        min="0" 
+                        max="100"
+                        step="1"
+                        defaultValue={50}
+                        onChange={handleMixChange}
+                    /> 
+                    <p>Mix: {mix}</p>
                 </div>
 
             ) :
