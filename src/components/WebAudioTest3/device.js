@@ -18,7 +18,7 @@ const setup = async(context) => {
     console.log(device);
 
 
-    return device.node;
+    return device;
 
     //Not sure what destination will end up being, noticing RNBO plays thru comp speakers even if I have
     //headphones connected

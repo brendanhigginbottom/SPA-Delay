@@ -44,11 +44,13 @@ function WebAudioTest3() {
 
     }
 
+    // sets file in state
     const handleAudioSelection = (e) => {
         setFile(e.target.value);
         console.log(file);
     }
 
+    //set value for gain
     const handleGainChange = (e) => {
         const gainForReducer = Number(e.target.value)
         console.log(isFinite(Number(e.target.value)));
