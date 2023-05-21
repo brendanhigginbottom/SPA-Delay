@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import makeGainContext from './makeGainContext';
+import handleAudioPlay from './handleAudioPlay';
 
 let audioContext;
 
@@ -21,42 +21,11 @@ function WebAudioTest3() {
     
 
     // onClick for audio playback
-    const handleAudioPlay = () => {
-        if (audioContext === undefined) {
-            const AudioContext = window.AudioContext || window.webkitAudioContext;
-            let audioContext = new AudioContext();
-            console.log(audioContext);
-            console.log(audioContext.state);
-            if (!source.current) {
-                source.current = audioContext.createMediaElementSource(audioRef.current);
-                source.current.connect(audioContext.destination);
-            
-                // const gainNode = makeGainContext(audioContext);
-                // console.log(gainNode.gain.value);
-                // console.log(gainNode.gain);
-                // gainNode.gain.value = 50;
-                // console.log(gainNode.gain.value);
-                // console.log(gainNode.gain);
-                
-                // console.log(gainNode.gain.value);
-                // if (isFinite(gain)) {
-                //     gainNode.gain.value = gain;
-                // } else {
-                //     console.log('gain was not finite');
-                // }
-
-               const gainNode = makeGainContext(audioContext, gain);
-               console.log(gainNode.gain.value);
-                
-                source.current.connect(gainNode).connect(audioContext.destination);
-                console.log(audioContext);
-                console.log(audioContext.state);
-            }
-            playEventListener();
-        } else {
-            playEventListener();
-        }
-    };
+    const audioPlay = () => {
+        handleAudioPlay(audioContext, source, audioRef, gain);
+        playEventListener();
+    }
+        
 
     const playEventListener = (e) => {
         // Select play button
@@ -117,7 +86,7 @@ function WebAudioTest3() {
                     data-playing="false"
                     role="switch"
                     aria-checked="false"
-                    onClick={handleAudioPlay}
+                    onClick={audioPlay}
 
                 >Play/Pause
                 </button>
@@ -130,7 +99,7 @@ function WebAudioTest3() {
                     <input 
                         type="range"
                         id="volume"
-                        min="-50"
+                        min="-50" 
                         max="50"
                         step="0.01"
                         onChange={handleGainChange}
