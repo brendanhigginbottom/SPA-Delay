@@ -1,6 +1,6 @@
-const gainReducer = (state = 0, action) => {
+const colorReducer = (state = 50, action) => {
     switch (action.type) {
-      case 'SET_GAIN':
+      case 'SET_COLOR':
         return action.payload;
       default:
         return state;
@@ -9,5 +9,5 @@ const gainReducer = (state = 0, action) => {
   
   // gain will be on the redux state at:
   // state.gain
-  export default gainReducer;
+  export default colorReducer;
   

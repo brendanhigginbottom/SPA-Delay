@@ -7,22 +7,19 @@ let audioContext;
 
 function WebAudioTest3() {
     const [file, setFile] = useState(null);
-    // const [gain, setGain] = useState(3);
-    const [gainNode, setGainNode] = useState({});
 
-    //redux
+    // Redux getting parameter values set by user with sliders
     const dispatch = useDispatch();
-    const gain = useSelector(store => store.gain);
+    const color = useSelector(store => store.color);
+    const filter = useSelector(store => store.filter);
    
-
     //useRef to get audio file
     const audioRef = useRef();
     const source = useRef();
     
-
     // onClick for audio playback
     const audioPlay = () => {
-        handleAudioPlay(audioContext, source, audioRef, gain);
+        handleAudioPlay(audioContext, source, audioRef, color, filter);
         playEventListener();
     }
         
@@ -50,15 +47,36 @@ function WebAudioTest3() {
         console.log(file);
     }
 
-    //set value for gain
-    const handleGainChange = (e) => {
-        const gainForReducer = Number(e.target.value)
-        console.log(isFinite(Number(e.target.value)));
-        console.log(gain);
+    //set value for color
+    const handleColorChange = (e) => {
+        const colorForReducer = Number(e.target.value);
         dispatch({
-            type: 'SET_GAIN',
-            payload: gainForReducer
+            type: 'SET_COLOR',
+            payload: colorForReducer,
         });
+    }
+
+    // set filter 
+    const handleFilterChange = (e) => {
+        const filterForReducer = Number(e.target.value);
+        dispatch({
+            type: 'SET_FILTER',
+            payload: filterForReducer,
+        })
+    }
+
+    // Display filter text
+    const handleFilterText = () => {
+        const filterNames = [
+            'None',
+            'Low Pass',
+            'High Pass',
+            'Band Pass',
+            'Notch'
+        ];
+
+        return filterNames[filter];
+
     }
 
     return (
@@ -98,15 +116,33 @@ function WebAudioTest3() {
             }
             {file ? (
                 <div>
+                    <label htmlFor="color">Set Color value:</label>
                     <input 
                         type="range"
-                        id="volume"
-                        min="-50" 
-                        max="50"
-                        step="0.01"
-                        onChange={handleGainChange}
+                        id="color"
+                        min="0" 
+                        max="100"
+                        step="1"
+                        onChange={handleColorChange}
                     /> 
-                    <h1>{gain}</h1>
+                    <p>Color: {color}</p>
+                </div>
+
+            ) :
+                <></>
+            }
+            {file ? (
+                <div>
+                    <label htmlFor="filter">Set Color value:</label>
+                    <input 
+                        type="range"
+                        id="filter"
+                        min="0" 
+                        max="4"
+                        step="1"
+                        onChange={handleFilterChange}
+                    /> 
+                    <p>Filter type: {handleFilterText()}</p>
                 </div>
 
             ) :

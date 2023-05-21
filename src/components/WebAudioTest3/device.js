@@ -1,6 +1,6 @@
 const { createDevice } = require('@rnbo/js');
 //Creating device (delay line) from the exported JSON file
-const setup = async(context) => {
+const setup = async(context, color, filter) => {
     const patchExportURL = "/export/rnbo.filterdelay.json";
     let rawPatcher = await fetch(patchExportURL,{
         headers : { 
@@ -16,6 +16,17 @@ const setup = async(context) => {
 
     let device = await createDevice({ context, patcher });
     console.log(device);
+
+    const colorParam = device.parametersById.get("color");
+    colorParam.value = color;
+    console.log(colorParam.value);
+    console.log(colorParam.min, colorParam.max);
+    console.log(device.parameters[3].value);
+
+    const filterParam = device.parametersById.get("filter");
+    console.log(filterParam.enumValues);
+    filterParam.enumValue = filter;
+    console.log(filterParam.enumValue);
 
 
     return device;

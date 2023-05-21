@@ -1,7 +1,7 @@
-import makeGainContext from "./makeGainContext";
+// import makeGainContext from "./makeGainContext";
 import device from "./device";
 
-const handleAudioPlay = async(audioContext, source, audioRef, gain) => {
+const handleAudioPlay = async(audioContext, source, audioRef, color, filter) => {
     if (audioContext === undefined) {
         const AudioContext = window.AudioContext || window.webkitAudioContext;
         let audioContext = new AudioContext();
@@ -14,7 +14,7 @@ const handleAudioPlay = async(audioContext, source, audioRef, gain) => {
 
             // const gainNode = makeGainContext(audioContext, gain);
             // console.log(gainNode.gain.value);
-            const delay = await device(audioContext);
+            const delay = await device(audioContext, color, filter);
             console.log(device);
 
             source.current.connect(delay.node).connect(audioContext.destination);
