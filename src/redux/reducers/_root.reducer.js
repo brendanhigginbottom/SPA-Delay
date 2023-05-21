@@ -6,6 +6,7 @@ import user from './user.reducer';
 import color from './color.reducer';
 import filter from './filter.reducer';
 import mix from './mix.reducer';
+import feedback from './feedback.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -19,6 +20,8 @@ const rootReducer = combineReducers({
   color, // setting parameter value of gain as number
   filter, // setting string corresponding to array of filter options
   mix, // setting mix parameter value
+  feedback, // setting feedback parameter value
+
 });
 
 export default rootReducer;

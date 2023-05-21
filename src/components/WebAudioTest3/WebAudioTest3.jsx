@@ -13,6 +13,7 @@ function WebAudioTest3() {
     const color = useSelector(store => store.color);
     const filter = useSelector(store => store.filter);
     const mix = useSelector(store => store.mix);
+    const feedback = useSelector(store => store.feedback);
    
     //useRef to get audio file
     const audioRef = useRef();
@@ -20,7 +21,7 @@ function WebAudioTest3() {
     
     // onClick for audio playback
     const audioPlay = () => {
-        handleAudioPlay(audioContext, source, audioRef, color, filter, mix);
+        handleAudioPlay(audioContext, source, audioRef, color, filter, mix, feedback);
         playEventListener();
     };
         
@@ -101,6 +102,15 @@ function WebAudioTest3() {
         })
     };
 
+    // Need to limit this to 80-90 to prevent user from blowing out their speakers
+    const handleFeedbackChange = (e) => {
+        const feedbackNumValue = Number(e.target.value);
+        dispatch({
+            type: 'SET_FEEDBACK',
+            payload: feedbackNumValue,
+        })
+    };
+
     return (
         <div>
             <h1>Test 3</h1>
@@ -155,7 +165,7 @@ function WebAudioTest3() {
             }
             {file ? (
                 <div>
-                    <label htmlFor="filter">Set Color value:</label>
+                    <label htmlFor="filter">Set Filter type:</label>
                     <input 
                         type="range"
                         id="filter"
@@ -173,7 +183,7 @@ function WebAudioTest3() {
             }
             {file ? (
                 <div>
-                    <label htmlFor="mix">Set Color value:</label>
+                    <label htmlFor="mix">Set Mix value:</label>
                     <input 
                         type="range"
                         id="mix"
@@ -184,6 +194,24 @@ function WebAudioTest3() {
                         onChange={handleMixChange}
                     /> 
                     <p>Mix: {mix}</p>
+                </div>
+
+            ) :
+                <></>
+            }
+            {file ? (
+                <div>
+                    <label htmlFor="feedback">Set Feedback value:</label>
+                    <input 
+                        type="range"
+                        id="feedback"
+                        min="0" 
+                        max="100"
+                        step="1"
+                        defaultValue={50}
+                        onChange={handleFeedbackChange}
+                    /> 
+                    <p>Feedback: {feedback}</p>
                 </div>
 
             ) :

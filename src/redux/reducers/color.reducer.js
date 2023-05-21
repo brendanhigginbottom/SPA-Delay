@@ -7,7 +7,7 @@ const colorReducer = (state = 50, action) => {
     }
   };
   
-  // gain will be on the redux state at:
+  // color will be on the redux state at:
   // state.gain
   export default colorReducer;
   

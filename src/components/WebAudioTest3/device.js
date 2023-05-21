@@ -1,6 +1,6 @@
 const { createDevice } = require('@rnbo/js');
 //Creating device (delay line) from the exported JSON file
-const setup = async(context, color, filter, mix) => {
+const setup = async(context, color, filter, mix, feedback) => {
     const patchExportURL = "/export/rnbo.filterdelay.json";
     let rawPatcher = await fetch(patchExportURL,{
         headers : { 
@@ -31,6 +31,9 @@ const setup = async(context, color, filter, mix) => {
     //mix
     const mixParam = device.parametersById.get("mix");
     mixParam.value = mix;
+    //feedback
+    const feedbackParam = device.parametersById.get('regen');
+    feedbackParam.value = feedback
 
 
     return device;
