@@ -11,9 +11,6 @@ const handleAudioPlay = async(audioContext, source, audioRef, color, filter, mix
             source.current = audioContext.createMediaElementSource(audioRef.current);
             source.current.connect(audioContext.destination);
 
-
-            // const gainNode = makeGainContext(audioContext, gain);
-            // console.log(gainNode.gain.value);
             const delay = await device(audioContext, color, filter, mix, feedback);
             console.log(device);
 
