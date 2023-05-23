@@ -1,6 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import handleAudioPlay from './handleAudioPlay';
+// Imports for delay param sliders
+import Color from './ParamComponents/Color.jsx';
+import Feedback from './ParamComponents/Feedback.jsx';
+import Mix from './ParamComponents/Mix.jsx';
+import Filter from './ParamComponents/Filter.jsx';
 
 function WebAudioTest3() {
     const [file, setFile] = useState(null);
@@ -8,7 +13,6 @@ function WebAudioTest3() {
     const [audioElement, setAudioElement] = useState(<></>)
 
     // Redux getting parameter values set by user with sliders
-    const dispatch = useDispatch();
     const color = useSelector(store => store.color);
     const filter = useSelector(store => store.filter);
     const mix = useSelector(store => store.mix);
@@ -22,8 +26,6 @@ function WebAudioTest3() {
     const audioPlay = () => {
         console.log(source.current);
         console.log(audioRef.current);
-        // createAudioElement;
-        console.log(audioElement);
         if (playing === 'false') {
             handleAudioPlay(source, audioRef, color, filter, mix, feedback);
             playEventListener();
@@ -53,15 +55,6 @@ function WebAudioTest3() {
         // createAudioElement;
     };
 
-    //set value for color
-    const handleColorChange = (e) => {
-        const colorForReducer = Number(e.target.value);
-        dispatch({
-            type: 'SET_COLOR',
-            payload: colorForReducer,
-        });
-    };
-
     // create <audio> element
     const createAudioElement = () => {
         console.log('making new element')
@@ -75,28 +68,11 @@ function WebAudioTest3() {
         // ) :
         //     <></>
         // }
-        // setAudioElement[<audio
-        //     src={file}
-        //     type="audio/mpeg"
-        // />]
+        setAudioElement[<audio
+            src={file}
+            type="audio/mpeg"
+        />]
     }
-
-    // set filter 
-    const handleFilterChange = (e) => {
-        const filterNumValue = Number(e.target.value);
-        const filterNames = [
-            'None',
-            'LP',
-            'HP',
-            'BP',
-            'Notch'
-        ];
-        const filterEnumForReducer = filterNames[filterNumValue]
-        dispatch({
-            type: 'SET_FILTER',
-            payload: filterEnumForReducer,
-        })
-    };
 
     //! Return to this for QoL
     // Display filter text 
@@ -116,23 +92,6 @@ function WebAudioTest3() {
     //     return filterNames[filterNumValue];
 
     // }
-
-    const handleMixChange = (e) => {
-        const mixNumValue = Number(e.target.value);
-        dispatch({
-            type: 'SET_MIX',
-            payload: mixNumValue,
-        })
-    };
-
-    // Need to limit this to 80-90 to prevent user from blowing out their speakers
-    const handleFeedbackChange = (e) => {
-        const feedbackNumValue = Number(e.target.value);
-        dispatch({
-            type: 'SET_FEEDBACK',
-            payload: feedbackNumValue,
-        })
-    };
 
     return (
         <div>
@@ -170,73 +129,22 @@ function WebAudioTest3() {
                 <></>
             }
             {file ? (
-                <div>
-                    <label htmlFor="color">Set Color value:</label>
-                    <input
-                        type="range"
-                        id="color"
-                        min="0"
-                        max="100"
-                        step="1"
-                        onChange={handleColorChange}
-                    />
-                    <p>Color: {color}</p>
-                </div>
-
+                <Color />
             ) :
                 <></>
             }
             {file ? (
-                <div>
-                    <label htmlFor="filter">Set Filter type:</label>
-                    <input
-                        type="range"
-                        id="filter"
-                        min="0"
-                        max="4"
-                        step="1"
-                        defaultValue={0}
-                        onChange={handleFilterChange}
-                    />
-                    <p>Filter type: {filter}</p>
-                </div>
-
+                <Filter />
             ) :
                 <></>
             }
             {file ? (
-                <div>
-                    <label htmlFor="mix">Set Mix value:</label>
-                    <input
-                        type="range"
-                        id="mix"
-                        min="0"
-                        max="100"
-                        step="1"
-                        defaultValue={50}
-                        onChange={handleMixChange}
-                    />
-                    <p>Mix: {mix}</p>
-                </div>
-
+                <Mix />
             ) :
                 <></>
             }
             {file ? (
-                <div>
-                    <label htmlFor="feedback">Set Feedback value:</label>
-                    <input
-                        type="range"
-                        id="feedback"
-                        min="0"
-                        max="100"
-                        step="1"
-                        defaultValue={50}
-                        onChange={handleFeedbackChange}
-                    />
-                    <p>Feedback: {feedback}</p>
-                </div>
-
+                <Feedback />
             ) :
                 <></>
             }
