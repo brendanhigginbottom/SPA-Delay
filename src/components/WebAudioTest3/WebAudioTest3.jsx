@@ -2,11 +2,10 @@ import { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import handleAudioPlay from './handleAudioPlay';
 
-let audioContext;
-
-
 function WebAudioTest3() {
     const [file, setFile] = useState(null);
+    const [playing, setPlaying] = useState('false');
+    const [audioElement, setAudioElement] = useState(<></>)
 
     // Redux getting parameter values set by user with sliders
     const dispatch = useDispatch();
@@ -14,39 +13,44 @@ function WebAudioTest3() {
     const filter = useSelector(store => store.filter);
     const mix = useSelector(store => store.mix);
     const feedback = useSelector(store => store.feedback);
-   
+
     //useRef to get audio file
     const audioRef = useRef();
     const source = useRef();
-    
+
     // onClick for audio playback
     const audioPlay = () => {
-        handleAudioPlay(audioContext, source, audioRef, color, filter, mix, feedback);
-        playEventListener();
+        console.log(source.current);
+        console.log(audioRef.current);
+        // createAudioElement;
+        console.log(audioElement);
+        if (playing === 'false') {
+            handleAudioPlay(source, audioRef, color, filter, mix, feedback);
+            playEventListener();
+        } else {
+            playEventListener();
+        }
     };
-        
 
-    const playEventListener = (e) => {
+
+    const playEventListener = async(e) => {
         // Select play button
-        const playButton = document.querySelector('#playButton');
-        console.log(playButton.dataset.playing);
 
-                //Play or pause depending on state
-                if (playButton.dataset.playing === "false") {
-                    audioRef.current.play();
-                    playButton.dataset.playing = "true";
-                    console.log(playButton.dataset.playing);
-                } else if (playButton.dataset.playing === "true") {
-                    audioRef.current.pause();
-                    playButton.dataset.playing = "false";
-                }
-
+        //Play or pause depending on state
+        if (playing === "false") {
+            audioRef.current.play();
+            setPlaying('true');
+        } else if (playing === "true") {
+            audioRef.current.pause();
+            setPlaying('false');
+        }
     };
 
     // sets file in state
     const handleAudioSelection = (e) => {
         setFile(e.target.value);
         console.log(file);
+        // createAudioElement;
     };
 
     //set value for color
@@ -57,6 +61,25 @@ function WebAudioTest3() {
             payload: colorForReducer,
         });
     };
+
+    // create <audio> element
+    const createAudioElement = () => {
+        console.log('making new element')
+        // {file ? (
+        //     <audio
+        //         ref={audioRef}
+        //         src={file}
+        //         type="audio/mpeg"
+        //     />
+
+        // ) :
+        //     <></>
+        // }
+        // setAudioElement[<audio
+        //     src={file}
+        //     type="audio/mpeg"
+        // />]
+    }
 
     // set filter 
     const handleFilterChange = (e) => {
@@ -122,6 +145,7 @@ function WebAudioTest3() {
                 <option value="./export/media/SPADelayTest2.mp3">Test 2</option>
             </select>
             {/* If file selected, render <audio> element, play button, and gain slider */}
+            {/* {createAudioElement()} */}
             {file ? (
                 <audio
                     ref={audioRef}
@@ -129,13 +153,12 @@ function WebAudioTest3() {
                     type="audio/mpeg"
                 />
 
-            ) :
-                <></>
-            }
+                ) :
+                    <></>
+                }
             {file ? (
                 <button
                     id="playButton"
-                    data-playing="false"
                     role="switch"
                     aria-checked="false"
                     onClick={audioPlay}
@@ -149,14 +172,14 @@ function WebAudioTest3() {
             {file ? (
                 <div>
                     <label htmlFor="color">Set Color value:</label>
-                    <input 
+                    <input
                         type="range"
                         id="color"
-                        min="0" 
+                        min="0"
                         max="100"
                         step="1"
                         onChange={handleColorChange}
-                    /> 
+                    />
                     <p>Color: {color}</p>
                 </div>
 
@@ -166,15 +189,15 @@ function WebAudioTest3() {
             {file ? (
                 <div>
                     <label htmlFor="filter">Set Filter type:</label>
-                    <input 
+                    <input
                         type="range"
                         id="filter"
-                        min="0" 
+                        min="0"
                         max="4"
                         step="1"
                         defaultValue={0}
                         onChange={handleFilterChange}
-                    /> 
+                    />
                     <p>Filter type: {filter}</p>
                 </div>
 
@@ -184,15 +207,15 @@ function WebAudioTest3() {
             {file ? (
                 <div>
                     <label htmlFor="mix">Set Mix value:</label>
-                    <input 
+                    <input
                         type="range"
                         id="mix"
-                        min="0" 
+                        min="0"
                         max="100"
                         step="1"
                         defaultValue={50}
                         onChange={handleMixChange}
-                    /> 
+                    />
                     <p>Mix: {mix}</p>
                 </div>
 
@@ -202,15 +225,15 @@ function WebAudioTest3() {
             {file ? (
                 <div>
                     <label htmlFor="feedback">Set Feedback value:</label>
-                    <input 
+                    <input
                         type="range"
                         id="feedback"
-                        min="0" 
+                        min="0"
                         max="100"
                         step="1"
                         defaultValue={50}
                         onChange={handleFeedbackChange}
-                    /> 
+                    />
                     <p>Feedback: {feedback}</p>
                 </div>
 
