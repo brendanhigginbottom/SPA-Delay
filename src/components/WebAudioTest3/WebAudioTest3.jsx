@@ -1,13 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import handleAudioPlay from './handleAudioPlay';
-// Imports for delay param sliders
-import Color from './ParamComponents/Color.jsx';
-import Feedback from './ParamComponents/Feedback.jsx';
-import Mix from './ParamComponents/Mix.jsx';
-import Filter from './ParamComponents/Filter.jsx';
+// Import for delay param sliders
 import ParamSliders from './ParamSliders.jsx';
-
+let test = 2;
 
 function WebAudioTest3() {
     const [file, setFile] = useState(null);
@@ -23,19 +19,21 @@ function WebAudioTest3() {
     //useRef to get audio file
     const audioRef = useRef();
     const source = useRef();
+    
 
     // onClick for audio playback
     const audioPlay = () => {
         console.log(source.current);
         console.log(audioRef.current);
         if (playing === 'false') {
-            handleAudioPlay(source, audioRef, color, filter, mix, feedback);
+            handleAudioPlay(test, audioRef, color, filter, mix, feedback);
             playEventListener();
         } else {
             playEventListener();
+            test = 3;
+            console.log(test);
         }
     };
-
 
     const playEventListener = async (e) => {
         // Select play button
@@ -54,33 +52,20 @@ function WebAudioTest3() {
     const handleAudioSelection = (e) => {
         setFile(e.target.value);
         console.log(file);
-        createAudioElement();
+        // createAudioElement();
     };
 
     // create <audio> element
 
-    const createAudioElement = () => {
-        console.log(document.querySelector('#audioElement'));
-
-        setAudioElement[document.querySelector('#audioElement')];
-
-
-        console.log(audioElement.audio);
-
-        // console.log('making new element')
-
-        // setAudioElement[{
-        //     audio: <audio src={file} type="audio/mpeg" />
-        // }];
-
-        // return (
-
-        //     <audio
-        //         ref={audioRef}
-        //         src={file}
-        //         type="audio/mpeg"
-        //     />
-        // )
+    const createAudioElement = (audioRef, file) => {
+        return (
+            <audio
+                ref={audioRef}
+                id="audioElement"
+                src={file}
+                type="audio/mpeg"
+            />
+        )
     }
 
     return (
@@ -102,7 +87,6 @@ function WebAudioTest3() {
                     src={file}
                     type="audio/mpeg"
                 />
-
             ) :
                 <></>
             }
@@ -112,7 +96,6 @@ function WebAudioTest3() {
                     role="switch"
                     aria-checked="false"
                     onClick={audioPlay}
-
                 >Play/Pause
                 </button>
 
@@ -127,5 +110,6 @@ function WebAudioTest3() {
         </div>
     );
 }
+
 
 export default WebAudioTest3;
