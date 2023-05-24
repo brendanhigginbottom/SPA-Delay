@@ -1,10 +1,11 @@
 // import makeGainContext from "./makeGainContext";
 import device from "./device";
+import {useEffect} from 'react';
 
 let audioContext;
 const mediaElementSource = new WeakMap();
 const handleAudioPlay = async(source, audioRef, color, filter, mix, feedback) => {
-    if (audioContext === undefined) {
+    // if (audioContext === undefined) {
         // create audio context
         const AudioContext = window.AudioContext || window.webkitAudioContext;
         let audioContext = new AudioContext();
@@ -12,7 +13,6 @@ const handleAudioPlay = async(source, audioRef, color, filter, mix, feedback) =>
         console.log(audioContext.state);
         if (!source.current) {
             // create MediaElementAudioSourceNode with current file
-            // source.current = audioContext.createMediaElementSource(audioRef.current);
             source.current = audioContext.createMediaElementSource(audioRef.current);
             // mediaElementSource.set(audioRef.current, source.current);
             source.current.connect(audioContext.destination);
@@ -37,6 +37,8 @@ const handleAudioPlay = async(source, audioRef, color, filter, mix, feedback) =>
         //     console.log(audioContext.state);
         //     }
         };
-    }
+        
+    // }
+    
 }
 export default handleAudioPlay;

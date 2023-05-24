@@ -1,16 +1,18 @@
 import { useState, useEffect, useRef } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import handleAudioPlay from './handleAudioPlay';
 // Imports for delay param sliders
 import Color from './ParamComponents/Color.jsx';
 import Feedback from './ParamComponents/Feedback.jsx';
 import Mix from './ParamComponents/Mix.jsx';
 import Filter from './ParamComponents/Filter.jsx';
+import ParamSliders from './ParamSliders.jsx';
+
 
 function WebAudioTest3() {
     const [file, setFile] = useState(null);
     const [playing, setPlaying] = useState('false');
-    const [audioElement, setAudioElement] = useState(<></>)
+    const [audioElement, setAudioElement] = useState(<></>);
 
     // Redux getting parameter values set by user with sliders
     const color = useSelector(store => store.color);
@@ -35,7 +37,7 @@ function WebAudioTest3() {
     };
 
 
-    const playEventListener = async(e) => {
+    const playEventListener = async (e) => {
         // Select play button
 
         //Play or pause depending on state
@@ -52,46 +54,34 @@ function WebAudioTest3() {
     const handleAudioSelection = (e) => {
         setFile(e.target.value);
         console.log(file);
-        // createAudioElement;
+        createAudioElement();
     };
 
     // create <audio> element
+
     const createAudioElement = () => {
-        console.log('making new element')
-        // {file ? (
+        console.log(document.querySelector('#audioElement'));
+
+        setAudioElement[document.querySelector('#audioElement')];
+
+
+        console.log(audioElement.audio);
+
+        // console.log('making new element')
+
+        // setAudioElement[{
+        //     audio: <audio src={file} type="audio/mpeg" />
+        // }];
+
+        // return (
+
         //     <audio
         //         ref={audioRef}
         //         src={file}
         //         type="audio/mpeg"
         //     />
-
-        // ) :
-        //     <></>
-        // }
-        setAudioElement[<audio
-            src={file}
-            type="audio/mpeg"
-        />]
+        // )
     }
-
-    //! Return to this for QoL
-    // Display filter text 
-    // This is necessary because I need to pass abbreviations
-    // to enumValue on delay but want user to see full name
-    // const handleFilterText = () => {
-    //     const filterNumValue = Number(document.querySelector('#filter').value);
-    //     console.log(filterNumValue)
-    //     const filterNames = [
-    //         'None',
-    //         'Low Pass',
-    //         'High Pass',
-    //         'Band Pass',
-    //         'Notch'
-    //     ];
-
-    //     return filterNames[filterNumValue];
-
-    // }
 
     return (
         <div>
@@ -103,18 +93,19 @@ function WebAudioTest3() {
                 <option value="./export/media/SPADelayTest.mp3">Test 1</option>
                 <option value="./export/media/SPADelayTest2.mp3">Test 2</option>
             </select>
-            {/* If file selected, render <audio> element, play button, and gain slider */}
+            {/* If file selected, render <audio> element and play button*/}
             {/* {createAudioElement()} */}
             {file ? (
                 <audio
                     ref={audioRef}
+                    id="audioElement"
                     src={file}
                     type="audio/mpeg"
                 />
 
-                ) :
-                    <></>
-                }
+            ) :
+                <></>
+            }
             {file ? (
                 <button
                     id="playButton"
@@ -129,22 +120,7 @@ function WebAudioTest3() {
                 <></>
             }
             {file ? (
-                <Color />
-            ) :
-                <></>
-            }
-            {file ? (
-                <Filter />
-            ) :
-                <></>
-            }
-            {file ? (
-                <Mix />
-            ) :
-                <></>
-            }
-            {file ? (
-                <Feedback />
+                <ParamSliders />
             ) :
                 <></>
             }
