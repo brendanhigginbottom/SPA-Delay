@@ -33,7 +33,11 @@ function InputCheck() {
         <>
             <label htmlFor="input">Input </label>
             <input type="checkbox" id="input" onChange={handleInputChange} />
-            {input}
+            {input === "1" ? (
+                <>On</>
+            ) :
+                <>Off</>
+            }
         </>
     );
 }
