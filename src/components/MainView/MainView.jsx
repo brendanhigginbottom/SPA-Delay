@@ -8,6 +8,7 @@ import SavePresetButton from '../SavePresetButton/SavePresetButton';
 
 
 function WebAudioTest3() {
+    // State for selecting mp3 file and for toggling audio play state
     const [file, setFile] = useState(null);
     const [playing, setPlaying] = useState('false');
 
