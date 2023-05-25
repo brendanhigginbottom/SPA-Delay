@@ -1,6 +1,6 @@
 const { createDevice } = require('@rnbo/js');
 //Creating device (delay line) from the exported JSON file
-const setup = async(context, color, filter, mix, feedback, input, time, scale) => {
+const setup = async(context, color, filter, mix, feedback, input, time, scale, volume) => {
     const patchExportURL = "/export/rnbo.filterdelay.json";
     let rawPatcher = await fetch(patchExportURL,{
         headers : { 
@@ -45,6 +45,9 @@ const setup = async(context, color, filter, mix, feedback, input, time, scale) =
     // scale
     const scaleParam = device.parametersById.get('scale');
     scaleParam.enumValue = scale;
+    // volume
+    const volumeParam = device.parametersById.get('volume');
+    volumeParam.value = volume;
 
 
 

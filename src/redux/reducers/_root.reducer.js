@@ -10,6 +10,7 @@ import feedback from './feedback.reducer';
 import input from './input.reducer';
 import time from './time.reducer';
 import scale from './scale.reducer';
+import volume from './volume.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -27,6 +28,8 @@ const rootReducer = combineReducers({
   input, // setting input on/off
   time, // setting time parameter value
   scale, // setting string corresponding to array of scale options
+  volume, // setting volume parameter value
+
   
 
 });
