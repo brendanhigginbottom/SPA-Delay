@@ -7,6 +7,7 @@ function ParamSliders() {
 
     return (
         <>
+            <br />
             <Color />
             <Filter />
             <Feedback />

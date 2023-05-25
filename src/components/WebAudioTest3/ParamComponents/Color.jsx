@@ -12,7 +12,6 @@ function Color() {
             payload: colorForReducer,
         });
     };
-    // console.log(file);
 
     return (
         <div>
