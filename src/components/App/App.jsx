@@ -20,6 +20,7 @@ import LandingPage from '../LandingPage/LandingPage.jsx';
 import LoginPage from '../LoginPage/LoginPage.jsx';
 import RegisterPage from '../RegisterPage/RegisterPage.jsx';
 import MainView from '../MainView/MainView.jsx';
+import UserPresets from '../UserPresets/UserPresets.jsx';
 
 
 import './App.css';
@@ -78,10 +79,20 @@ function App() {
             <MainView />
           </ProtectedRoute>
 
+          <ProtectedRoute
+            // logged in shows UserPresets else shows LoginPage
+            exact
+            path="/mypresets"
+          >
+            <UserPresets />
+
+          </ProtectedRoute>
+
           <Route
             exact
             path="/login"
           >
+
             {user.id ?
               // If the user is already logged in, 
               // redirect to the /user page

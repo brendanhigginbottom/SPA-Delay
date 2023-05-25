@@ -36,6 +36,10 @@ function Nav() {
               Info Page
             </Link>
 
+            <Link className="navLink" to="/mypresets">
+              My Presets
+            </Link>
+
             <LogOutButton className="navLink" />
           </>
         )}
