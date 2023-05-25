@@ -36,7 +36,9 @@ const setup = async(context, color, filter, mix, feedback, input) => {
     feedbackParam.value = feedback
     //input
     const inputParam = device.parametersById.get('input');
-    inputParam.value = input;
+    inputParam.enumValue = input;
+    console.log(inputParam.enumValue);
+    console.log(input);
 
 
 
