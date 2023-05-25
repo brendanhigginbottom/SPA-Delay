@@ -8,6 +8,6 @@ const mixReducer = (state = 50, action) => {
   };
   
   // mix will be on the redux state at:
-  // state.gain
+  // state.mix
   export default mixReducer;
   
