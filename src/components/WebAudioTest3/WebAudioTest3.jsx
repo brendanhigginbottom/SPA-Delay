@@ -18,6 +18,7 @@ function WebAudioTest3() {
     const time = useSelector(store => store.time);
     const scale = useSelector(store => store.scale);
     const volume = useSelector(store => store.volume);
+    const feedbackCheck = useSelector(store => store.feedbackCheck);
 
     //useRef to get audio file
     const audioRef = useRef();
@@ -28,7 +29,7 @@ function WebAudioTest3() {
         console.log(source.current);
         console.log(audioRef.current);
         if (playing === 'false') {
-            handleAudioPlay(audioRef, color, filter, mix, feedback, input, time, scale, volume);
+            handleAudioPlay(audioRef, color, filter, mix, feedback, input, time, scale, volume, feedbackCheck);
             playPause();
         } else {
             playPause();
