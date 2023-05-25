@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux';
 import handleAudioPlay from './handleAudioPlay';
 // Import for delay param sliders
 import ParamSliders from './ParamSliders.jsx';
+// Import for SavePresetButton
+import SavePresetButton from '../SavePresetButton/SavePresetButton';
 
 
 function WebAudioTest3() {
@@ -92,6 +94,12 @@ function WebAudioTest3() {
             }
             {file ? (
                 <ParamSliders />
+            ) :
+                <></>
+            }
+            <br />
+            {file ? (
+                <SavePresetButton />
             ) :
                 <></>
             }
