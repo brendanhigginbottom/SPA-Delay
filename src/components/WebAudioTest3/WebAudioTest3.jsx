@@ -16,6 +16,10 @@ function WebAudioTest3() {
     const feedback = useSelector(store => store.feedback);
     const input = useSelector(store => store.input);
     const time = useSelector(store => store.time);
+    const scale = useSelector(store => store.scale);
+    const volume = useSelector(store => store.volume);
+    const feedbackCheck = useSelector(store => store.feedbackCheck);
+    const spread = useSelector(store => store.spread);
 
     //useRef to get audio file
     const audioRef = useRef();
@@ -26,7 +30,7 @@ function WebAudioTest3() {
         console.log(source.current);
         console.log(audioRef.current);
         if (playing === 'false') {
-            handleAudioPlay(audioRef, color, filter, mix, feedback, input, time);
+            handleAudioPlay(audioRef, color, filter, mix, feedback, input, time, scale, volume, feedbackCheck, spread);
             playPause();
         } else {
             playPause();
@@ -61,6 +65,7 @@ function WebAudioTest3() {
                 <option>Select a sound</option>
                 <option value="./export/media/SPADelayTest.mp3">Test 1</option>
                 <option value="./export/media/SPADelayTest2.mp3">Test 2</option>
+                <option value="./export/media/SPADelayTest3.mp3">Test 3</option>
             </select>
             {/* If file selected, render <audio> element, play button, and audio param sliders*/}
             {file ? (
