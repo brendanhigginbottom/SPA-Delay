@@ -4,6 +4,7 @@ import Mix from './ParamComponents/Mix.jsx';
 import Filter from './ParamComponents/Filter.jsx';
 import InputCheck from './ParamComponents/InputCheck.jsx';
 import Time from './ParamComponents/Time.jsx';
+import Scale from './ParamComponents/Scale.jsx';
 
 function ParamSliders() {
 
@@ -16,6 +17,8 @@ function ParamSliders() {
             <Feedback />
             <Mix />
             <Time />
+            <Scale />
+            
         </>
     );
 }
