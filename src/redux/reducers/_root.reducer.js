@@ -12,6 +12,7 @@ import time from './time.reducer';
 import scale from './scale.reducer';
 import volume from './volume.reducer';
 import feedbackCheck from './feedbackCheck.reducer';
+import spread from './spread.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -31,9 +32,7 @@ const rootReducer = combineReducers({
   scale, // setting string corresponding to array of scale options
   volume, // setting volume parameter value
   feedbackCheck, // setting feedback on/off
-
-  
-
+  spread, // setting spread parameter value
 });
 
 export default rootReducer;

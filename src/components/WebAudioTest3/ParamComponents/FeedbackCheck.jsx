@@ -29,7 +29,7 @@ function FeedbackCheck() {
 
     return (
         <>
-            <label htmlFor="feedbackCheck">Feedback </label>
+            <label htmlFor="feedbackCheck">Feedback: </label>
             <input type="checkbox" id="feedbackCheck" onChange={handleFeedbackCheckChange} />
             {feedbackCheck === "1" ? (
                 <>On</>
