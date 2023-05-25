@@ -1,8 +1,12 @@
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 
 // button user clicks to save a preset
 function SavePresetButton() {
+
+    // setting history
+    const history = useHistory();
 
     // Redux getting parameter values set by user with sliders to pass to delay called within handleAudioPlay
     const color = useSelector(store => store.color);
@@ -31,9 +35,13 @@ function SavePresetButton() {
 
     console.log(presetValues.color);
 
+    const savePreset = () => {
+        history.push('/mypresets');
+    }
+
     return (
         <>
-            <button>Save Preset</button>
+            <button onClick={savePreset}>Save Preset</button>
         </>
     );
 }
