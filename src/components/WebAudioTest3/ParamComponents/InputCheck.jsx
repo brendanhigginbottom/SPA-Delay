@@ -6,21 +6,24 @@ function InputCheck() {
     const input = useSelector(store => store.input);
 
     const handleInputChange = (e) => {
-        const inputIsChecked = e.target.value;
-        let inputValue;
+        const inputIsChecked = e.target;
+        console.log(inputIsChecked.checked);
+        // let inputValue;
+        let inputValue=[
+            "0",
+            "1"
+        ]
         if (inputIsChecked.checked === false) {
-            console.log('not checked')
-            inputValue = 1;
+            // inputValue = 1;
             dispatch({
                 type: 'SET_INPUT',
-                payload: inputValue,
+                payload: inputValue[1],
             });
         } else {
-            console.log('checked')
-            inputValue = 0;
+            // inputValue = 0;
             dispatch({
                 type: 'SET_INPUT',
-                payload: inputValue,
+                payload: inputValue[0],
             });
         }
     };
@@ -30,6 +33,11 @@ function InputCheck() {
         <>
             <label htmlFor="input">Input </label>
             <input type="checkbox" id="input" onChange={handleInputChange} />
+            {input === "1" ? (
+                <>On</>
+            ) :
+                <>Off</>
+            }
         </>
     );
 }
