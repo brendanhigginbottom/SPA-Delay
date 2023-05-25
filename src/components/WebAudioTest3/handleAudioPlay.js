@@ -5,7 +5,7 @@ let delay;
 let mediaElementSource;
 let audioContext;
 
-const handleAudioPlay = async (audioRef, color, filter, mix, feedback, input) => {
+const handleAudioPlay = async (audioRef, color, filter, mix, feedback, input, time) => {
     // create audio context
     if (!mediaElementSource) {
         const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -19,7 +19,7 @@ const handleAudioPlay = async (audioRef, color, filter, mix, feedback, input) =>
         mediaElementSource.disconnect();
     }
     // create delay
-    delay = await device(audioContext, color, filter, mix, feedback, input);
+    delay = await device(audioContext, color, filter, mix, feedback, input, time);
     console.log(device);
     // connect MediaElementAudioSourceNode to delay
     mediaElementSource.connect(delay.node).connect(audioContext.destination);
