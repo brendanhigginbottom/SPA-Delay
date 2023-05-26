@@ -36,7 +36,7 @@ function SavePresetButton() {
     console.log(presetValues.color);
 
     const savePreset = () => {
-        history.push('/mypresets');
+        history.push('/savepreset');
     }
 
     return (
