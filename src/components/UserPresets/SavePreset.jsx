@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 
+
 // form that SaveUserPreset button takes user to to enter name and desc of preset
 // contains dispatch for PUT saga 
 function SavePreset() {
@@ -8,8 +9,6 @@ function SavePreset() {
     // getting presetName and Desc for character limit
     const nameChars = useSelector(store => store.presetName).length;
     const descChars = useSelector(store => store.presetDesc).length;
-
-
 
     const putPreset = () => {
         // sends preset to DB
@@ -36,7 +35,7 @@ function SavePreset() {
 
     return (
         <>
-            <h1>SavePreset</h1>
+            <h1>/SavePreset</h1>
             <form onSubmit={putPreset}>
                 <label htmlFor="presetName">Preset Name:</label>
                 <input type="text" id="presetName" onChange={handleNameChange}/>
@@ -52,7 +51,7 @@ function SavePreset() {
                 />
                 <p>{descChars}/1000</p>
                 <br />
-                <input type="submit" value="Save Preset" />
+                {/* This will be StorePresetButton */}
             </form>
         </>
     );
