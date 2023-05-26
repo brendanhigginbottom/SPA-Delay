@@ -16,7 +16,7 @@ function StorePresetButton() {
     const spread = useSelector(store => store.spread);
 
     // might need to circle back and make sure enumValues are getting passed as strings
-    // This also still isn't formatted in JSON correctly: {"name" : [{obj}, {obj}]}
+    // This also still isn't formatted in JSON correctly: {"name" : [{obj}, {objst}]}
     let presetValues = {
         "color": color,
         "filter": filter,
