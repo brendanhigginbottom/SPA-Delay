@@ -4,7 +4,7 @@ import StorePresetButton from "../SavePresetButton/StorePresetButton.jsx";
 
 
 // form that SaveUserPreset button takes user to to enter name and desc of preset
-// contains dispatch for PUT saga 
+// Contains StoreUserPreset button that contains POST saga dispatch to POST preset
 function SavePreset() {
     // setup for redux
     const dispatch = useDispatch();
