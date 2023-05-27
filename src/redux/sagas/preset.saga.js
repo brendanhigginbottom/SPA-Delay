@@ -4,7 +4,7 @@ import axios from 'axios';
 
 function* postPreset(action) {
     try {
-        yield axios.post('/api/element', action.payload);
+        yield axios.post('/api/userPreset', action.payload);
         yield put({ type: 'FETCH_ELEMENTS' });
         //We can pass functions through actions
         action.setNewElement('');
@@ -19,7 +19,7 @@ function* postPreset(action) {
 
 function* presetSaga() {
     yield takeLatest('ADD_PRESET', postPreset);
-   
+
   }
 
 

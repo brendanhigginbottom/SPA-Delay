@@ -7,6 +7,7 @@ const router = express.Router();
  */
 router.get('/', (req, res) => {
   // GET route code here
+  
 });
 
 /**
@@ -14,6 +15,9 @@ router.get('/', (req, res) => {
  */
 router.post('/', (req, res) => {
   // POST route code here
+  const userID = req.body.id;
+  console.log(req.body);
+  
 });
 
 module.exports = router;
