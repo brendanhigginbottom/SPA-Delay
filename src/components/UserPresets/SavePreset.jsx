@@ -1,5 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 
+import StorePresetButton from "../SavePresetButton/StorePresetButton.jsx";
+
 
 // form that SaveUserPreset button takes user to to enter name and desc of preset
 // contains dispatch for PUT saga 
@@ -51,7 +53,7 @@ function SavePreset() {
                 />
                 <p>{descChars}/1000</p>
                 <br />
-                {/* This will be StorePresetButton */}
+                <StorePresetButton />
             </form>
         </>
     );
