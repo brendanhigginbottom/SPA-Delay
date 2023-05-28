@@ -5,7 +5,7 @@ import axios from 'axios';
 function* postPreset(action) {
     try {
         yield axios.post('/api/userPreset', action.payload);
-        yield put({ type: 'FETCH_ELEMENTS' });
+        yield put({ type: 'FETCH_PRESETS' });
         //We can pass functions through actions
         action.setNewElement('');
     } catch (error) {

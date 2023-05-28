@@ -12,7 +12,7 @@ CREATE TABLE "user" (
 CREATE TABLE "user_presets" (
 	"id" SERIAL PRIMARY KEY,
 	"user_id" INT REFERENCES "user"("id") NOT NULL,
-	"user_delay.json" jsonb,
+	"user_delay.json" JSONB,
 	"name" VARCHAR (100),
 	"description" VARCHAR (1000),
 	"created_at" TIMESTAMP DEFAULT NOW(),
