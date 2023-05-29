@@ -55,32 +55,7 @@ const setup = async(context, color, filter, mix, feedback, input, time, scale, v
     const spreadParam = device.parametersById.get('spread');
     spreadParam.value = spread;
 
-
-
-
     return device;
-
-    //Not sure what destination will end up being, noticing RNBO plays thru comp speakers even if I have
-    //headphones connected
-    // device.node.connect(context.destination);
-    // console.log(device.node);
-    // console.log(context.destination);
-
-    // //logging parameters of device
-    // device.parameters.forEach(parameter => {
-    //     console.log(parameter.id);
-    //     console.log(parameter.name);
-    // })
-
-    // console.log(device.parametersById.get("color"))
-    // const color = device.parametersById.get("color");
-    // console.log(color);
-    // setColor(Number(device.parameters[3].value));
-    // console.log(color.value);
-    // color.value = 2;
-    // console.log(color.min, color.max);
-    // console.log(device.parameters[3].value);
-    
 };
 
 export default setup;

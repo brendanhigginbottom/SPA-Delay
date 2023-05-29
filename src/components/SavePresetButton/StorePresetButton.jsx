@@ -1,8 +1,12 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 // Button displayed on /savepreset containing POST saga dispatch
 function StorePresetButton() {
 
+
+    const dispatch = useDispatch();
+    const history = useHistory();
     // Redux getting parameter values set by user with sliders to pass to delay called within handleAudioPlay
     const color = useSelector(store => store.color);
     const filter = useSelector(store => store.filter);
@@ -15,8 +19,7 @@ function StorePresetButton() {
     const feedbackCheck = useSelector(store => store.feedbackCheck);
     const spread = useSelector(store => store.spread);
 
-    // might need to circle back and make sure enumValues are getting passed as strings
-    // This also still isn't formatted in JSON correctly: {"name" : [{obj}, {obj}]}
+    // storing preset as obj to send to DB
     let user_delay = {
         "color": color,
         "filter": filter,
@@ -30,12 +33,20 @@ function StorePresetButton() {
         "spread": spread
     };
 
+    const storePreset = () => {
+        dispatch({
+            type: 'SET_PRESET_VALUES',
+            payload: user_delay,
+        })
+        history.push('/mypresets');
+    }
 
     return (
         <>
-            <button id="storePreset">Save Preset</button>
+            <button id="storePreset" onClick={storePreset}>Save Preset</button>
         </>
     );
 }
 
 export default StorePresetButton;
+
