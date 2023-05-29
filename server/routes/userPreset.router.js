@@ -15,8 +15,21 @@ router.get('/', (req, res) => {
  */
 router.post('/', (req, res) => {
   // POST route code here
-  const userID = req.body.id;
+  const userId = req.user.id;
   console.log(req.body);
+  const {presetValues, presetName, presetDesc} = req.body;
+  const queryText = `
+  INSERT INTO "user_presets" ("user_id", "user_delay.json", "name", "description", "public")
+  VALUES ($1, $2, $3, $4, $5);
+  `;
+
+  pool.query(queryText, [userId, presetValues, presetName, presetDesc, true])
+    .then(result => {
+      res.sendStatus(201);
+    }).catch(error => {
+      console.log(`Error is preset POST ${error}`)
+      res.sendStatus(500);
+    });
   
 });
 

@@ -7,15 +7,18 @@ function StorePresetButton() {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    // storing preset values as an object
+    // fetching preset values as an object, preset name, and preset description
+    const presetValues = useSelector(store => store.presetValues);
+    const presetName = useSelector(store => store.presetName);
+    const presetDesc = useSelector(store => store.presetDesc);
     
 
     const storePreset = () => {
-        dispatchEvent({
+        dispatch({
             type: 'ADD_PRESET',
-            payload: 1,
+            payload: {presetValues, presetName, presetDesc},
         })
-        history.push('/mypresets');
+        // history.push('/mypresets');
     }
 
     return (
