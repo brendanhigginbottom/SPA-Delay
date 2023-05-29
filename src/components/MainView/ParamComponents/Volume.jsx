@@ -22,7 +22,7 @@ function Volume() {
                 min="-100"
                 max="100"
                 step="1"
-                defaultValue={0}         
+                defaultValue={volume}         
                 onChange={handleVolumeChange}
             />
             <p>Volume: {volume}</p>
