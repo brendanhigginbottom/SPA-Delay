@@ -22,7 +22,7 @@ function Mix() {
                 min="0"
                 max="100"
                 step="1"
-                defaultValue={50}         
+                defaultValue={mix}         
                 onChange={handleMixChange}
             />
             <p>Mix: {mix}</p>

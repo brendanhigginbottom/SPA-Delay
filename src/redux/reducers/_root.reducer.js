@@ -14,6 +14,11 @@ import volume from './volume.reducer';
 import feedbackCheck from './feedbackCheck.reducer';
 import spread from './spread.reducer';
 
+// Preset name, description, and values reducers
+import presetName from './presetName.reducer';
+import presetDesc from './presetDesc.reducer';
+import presetValues from './presetValues.reducer';
+
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
 // This is imported in index.js as rootSaga
@@ -33,6 +38,9 @@ const rootReducer = combineReducers({
   volume, // setting volume parameter value
   feedbackCheck, // setting feedback on/off
   spread, // setting spread parameter value
+  presetName, // setting prest name
+  presetDesc, // setting preset description
+  presetValues, // setting all preset values
 });
 
 export default rootReducer;

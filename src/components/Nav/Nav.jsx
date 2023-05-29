@@ -40,6 +40,10 @@ function Nav() {
               My Presets
             </Link>
 
+            <Link className="navLink" to="/communitypresets">
+              Community Presets
+            </Link>
+
             <LogOutButton className="navLink" />
           </>
         )}

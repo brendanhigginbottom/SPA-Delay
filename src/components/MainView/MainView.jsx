@@ -69,6 +69,7 @@ function WebAudioTest3() {
                 <option value="./export/media/SPADelayTest.mp3">Test 1</option>
                 <option value="./export/media/SPADelayTest2.mp3">Test 2</option>
                 <option value="./export/media/SPADelayTest3.mp3">Test 3</option>
+                <option value="./export/media/SPADelayTest4.mp3">Test 4</option>
             </select>
             {/* If file selected, render <audio> element, play button, and audio param sliders*/}
             {file ? (

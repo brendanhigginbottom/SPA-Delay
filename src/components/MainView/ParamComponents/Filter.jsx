@@ -50,7 +50,7 @@ function Filter() {
                     min="0"
                     max="4"
                     step="1"
-                    defaultValue={0}
+                    defaultValue={filter}
                     onChange={handleFilterChange}
                 />
                 <p>Filter type: {filter}</p>

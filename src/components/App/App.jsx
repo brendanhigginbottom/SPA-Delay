@@ -21,6 +21,8 @@ import LoginPage from '../LoginPage/LoginPage.jsx';
 import RegisterPage from '../RegisterPage/RegisterPage.jsx';
 import MainView from '../MainView/MainView.jsx';
 import UserPresets from '../UserPresets/UserPresets.jsx';
+import SavePreset from '../UserPresets/SavePreset.jsx';
+import CommunityPresets from '../CommunityPresets/CommunityPresets.jsx';
 
 
 import './App.css';
@@ -85,6 +87,24 @@ function App() {
             path="/mypresets"
           >
             <UserPresets />
+
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows SavePreset else shows LoginPage
+            exact
+            path="/savepreset"
+          >
+            <SavePreset />
+
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows SavePreset else shows LoginPage
+            exact
+            path="/communitypresets"
+          >
+            <CommunityPresets />
 
           </ProtectedRoute>
 
