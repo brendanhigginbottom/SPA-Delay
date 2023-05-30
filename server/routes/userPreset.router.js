@@ -45,11 +45,11 @@ router.post('/', (req, res) => {
 /**
  * DELETE route
  */
-router.delete('/', (req, res) => {
-  const presetId = req.params;
+router.delete('/:id', (req, res) => {
+  const presetId = req.params.id;
   console.log(presetId);
   const queryText = `
-  DELETE * FROM "user_presets" WHERE "id" = $1
+  DELETE FROM "user_presets" WHERE "id" = $1
   `;
 
   pool.query(queryText, [presetId]).then(result => {

@@ -10,7 +10,10 @@ function DeletePresetButton(presetId) {
         dispatch({
             type: 'DELETE_PRESET',
             payload: presetId.presetId,
-        })
+        });
+        dispatch({
+            type: 'FETCH_PRESETS',
+        });
     }
 
     return (
