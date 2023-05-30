@@ -12,10 +12,6 @@ function SavePreset() {
     const nameChars = useSelector(store => store.presetName).length;
     const descChars = useSelector(store => store.presetDesc).length;
 
-    const putPreset = () => {
-        // sends preset to DB
-
-    }
 
     const handleNameChange = (e) => {
         // send name to redux
@@ -38,7 +34,7 @@ function SavePreset() {
     return (
         <>
             <h1>/SavePreset</h1>
-            <form onSubmit={putPreset}>
+            {/* <form> */}
                 <label htmlFor="presetName">Preset Name:</label>
                 <input type="text" id="presetName" onChange={handleNameChange}/>
                 <p>{nameChars}/100</p>
@@ -54,7 +50,7 @@ function SavePreset() {
                 <p>{descChars}/1000</p>
                 <br />
                 <StorePresetButton />
-            </form>
+            {/* </form> */}
         </>
     );
 }
