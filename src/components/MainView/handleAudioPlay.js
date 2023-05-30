@@ -7,12 +7,9 @@ let audioContext;
 
 const handleAudioPlay = async (audioRef, color, filter, mix, feedback, input, time, scale, volume, feedbackCheck, spread) => {
     // create audio context
-    console.log(window.AudioContext.length);
-    if (!mediaElementSource || audioContext.length === 0) {
+    if (!mediaElementSource) {
         const AudioContext = window.AudioContext || window.webkitAudioContext;
         audioContext = new AudioContext();
-        console.log(audioContext.length);
-        console.log(audioContext.state);
         // create MediaElementAudioSourceNode with current file
         mediaElementSource = audioContext.createMediaElementSource(audioRef.current);
         console.log('logging in if', mediaElementSource);
@@ -20,6 +17,7 @@ const handleAudioPlay = async (audioRef, color, filter, mix, feedback, input, ti
         // disconnect from delay with previous settings
         mediaElementSource.disconnect();
         console.log('disconnected old delay');
+        console.log(Object.keys(audioContext).length);
     }
     // create delay with param values from reducers
     delay = await device(audioContext, color, filter, mix, feedback, input, time, scale, volume, feedbackCheck, spread);
