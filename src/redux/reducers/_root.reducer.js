@@ -19,6 +19,9 @@ import presetName from './presetName.reducer';
 import presetDesc from './presetDesc.reducer';
 import presetValues from './presetValues.reducer';
 
+// Reducers for storing info from database
+import dBPresets from './dBPresets.reducer';
+
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
 // This is imported in index.js as rootSaga
@@ -41,6 +44,7 @@ const rootReducer = combineReducers({
   presetName, // setting prest name
   presetDesc, // setting preset description
   presetValues, // setting all preset values
+  dBPresets, // storing presets retrieved from server
 });
 
 export default rootReducer;
