@@ -20,3 +20,6 @@ CREATE TABLE "user_presets" (
 	"public" BOOLEAN NOT NULL,
 	"remixed_from" INT REFERENCES "user_presets"("id") NOT NULL
 );
+
+ALTER TABLE "user_presets" 
+ALTER COLUMN "remixed_from" DROP NOT NULL;
