@@ -31,12 +31,21 @@ function* getPreset(action) {
     }
 }
 
+function* deletePreset(action) {
+    try {
+        yield axios.delete('/api/userPreset', action.payload);
+        console.log('preset deleted');
+    } catch (error) {
+        // console.log(`error in deletePreset ${error}`);
+        alert('Something went wrong');
+    }
+} 
+
 
 function* presetSaga() {
     yield takeLatest('ADD_PRESET', postPreset);
-    yield takeLatest('FETCH_PRESETS', getPreset)
-  }
-
-
+    yield takeLatest('FETCH_PRESETS', getPreset);
+    yield takeLatest('DELETE_PRESET', deletePreset);
+}
 
 export default presetSaga;

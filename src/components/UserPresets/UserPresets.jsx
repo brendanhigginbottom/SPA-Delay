@@ -2,6 +2,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
 
+// /userpreset buttons import (DELETE and PUT)
+import DeletePresetButton from './DeletePresetButton.jsx';
+import EditPresetButton from './EditPresetButton.jsx';
+
 // Displays user's saved presets which onClick will navigate user to 
 // Delay view and populate delay with stored values
 // Contains GET saga dispatch to get user's presets
@@ -51,6 +55,11 @@ function UserPresets() {
                             <p>{preset.name}</p>
                             <p>{preset.description}</p>
                             <button onClick={loadPreset} data-id={preset.id}>Select Preset</button>
+                            <br />
+                            <DeletePresetButton 
+                                presetId={preset.id}
+                            />
+                            <EditPresetButton />
                         </div>
                     )
                 })
