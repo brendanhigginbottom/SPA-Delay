@@ -26,11 +26,9 @@ function WebAudioTest3() {
 
     //useRef to get audio file
     const audioRef = useRef();
-    const source = useRef();
 
     // onClick for audio playback
     const audioPlay = () => {
-        console.log(source.current);
         console.log(audioRef.current);
         if (playing === 'false') {
             handleAudioPlay(audioRef, color, filter, mix, feedback, input, time, scale, volume, feedbackCheck, spread);
@@ -40,8 +38,7 @@ function WebAudioTest3() {
         }
     };
 
-    const playPause = async (e) => {
-        // Select play button
+    const playPause = () => {
 
         //Play or pause depending on state
         if (playing === "false") {

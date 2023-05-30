@@ -18,7 +18,7 @@ function StorePresetButton() {
             type: 'ADD_PRESET',
             payload: {presetValues, presetName, presetDesc},
         })
-        // history.push('/mypresets');
+        history.push('/mypresets');
     }
 
     return (
