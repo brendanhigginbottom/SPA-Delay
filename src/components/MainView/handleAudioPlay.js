@@ -29,7 +29,7 @@ const handleAudioPlay = async (audioRef, color, filter, mix, feedback, input, ti
     mediaElementSource.connect(delay.node).connect(audioContext.destination);
     console.log(audioContext);
     console.log(audioContext.state);
-    console.log(window.AudioContext);
+    console.log(window.history);
 }
 
 

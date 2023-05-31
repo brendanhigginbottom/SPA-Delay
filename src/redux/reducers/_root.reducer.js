@@ -3,16 +3,16 @@ import errors from './errors.reducer';
 import user from './user.reducer';
 
 // Delay parameter value reducers
-import color from './color.reducer';
-import filter from './filter.reducer';
-import mix from './mix.reducer';
-import feedback from './feedback.reducer';
-import input from './input.reducer';
-import time from './time.reducer';
-import scale from './scale.reducer';
-import volume from './volume.reducer';
-import feedbackCheck from './feedbackCheck.reducer';
-import spread from './spread.reducer';
+import color from './SingleParamReducers/color.reducer';
+import filter from './SingleParamReducers/filter.reducer';
+import mix from './SingleParamReducers/mix.reducer';
+import feedback from './SingleParamReducers/feedback.reducer';
+import input from './SingleParamReducers/input.reducer';
+import time from './SingleParamReducers/time.reducer';
+import scale from './SingleParamReducers/scale.reducer';
+import volume from './SingleParamReducers/volume.reducer';
+import feedbackCheck from './SingleParamReducers/feedbackCheck.reducer';
+import spread from './SingleParamReducers/spread.reducer';
 
 // Preset name, description, and values reducers
 import presetName from './presetName.reducer';
