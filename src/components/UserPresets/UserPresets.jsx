@@ -15,15 +15,17 @@ function UserPresets() {
 
     const userPresets = useSelector(store => store.dBPresets);
 
-    // gets presets from DB and updates if store.dBPresets updates (rerenders all minus deleted preset)
+    // // gets presets from DB and updates if store.dBPresets updates (rerenders all minus deleted preset)
     useEffect(() => {
         dispatch({
             type: 'FETCH_PRESETS',
         })
-    }, [userPresets]);
+    }, []);
 
     console.log(userPresets);
 
+    // Takes in selected preset's id and loops over user presets to
+    // update audio parameter reducers with the values store in JSON in DB
     const loadPreset = (event) => {
         const presetId = event.target.dataset.id;
         console.log(presetId);

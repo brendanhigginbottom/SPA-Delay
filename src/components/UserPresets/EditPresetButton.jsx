@@ -1,12 +1,19 @@
+import { useDispatch } from 'react-redux';
 
 
 // delete button for use in /userpresets
-function EditPresetButton() {
+function EditPresetButton(presetId) {
+    const dispatch = useDispatch();
 
+    console.log(presetId.presetId)
+    const editPreset = () => {
+        
+    }
 
     return (
         <>
-            <button>Edit Preset</button>
+            <button onClick={editPreset}>Edit Preset</button>
+            
         </>
     );
 }

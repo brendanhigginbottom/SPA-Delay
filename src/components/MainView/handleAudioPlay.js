@@ -5,9 +5,11 @@ let delay;
 let mediaElementSource;
 let audioContext;
 
+
 const handleAudioPlay = async (audioRef, color, filter, mix, feedback, input, time, scale, volume, feedbackCheck, spread) => {
     // create audio context
     if (!mediaElementSource) {
+        console.log(window);
         const AudioContext = window.AudioContext || window.webkitAudioContext;
         audioContext = new AudioContext();
         // create MediaElementAudioSourceNode with current file
@@ -27,6 +29,7 @@ const handleAudioPlay = async (audioRef, color, filter, mix, feedback, input, ti
     mediaElementSource.connect(delay.node).connect(audioContext.destination);
     console.log(audioContext);
     console.log(audioContext.state);
+    console.log(window.history);
 }
 
 

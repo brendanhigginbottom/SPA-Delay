@@ -16,7 +16,7 @@ function* postPreset(action) {
     }
 }
 
-function* getPreset(action) {
+function* getPreset() {
     try {
 
         const presets = yield axios.get('/api/userPreset');
@@ -32,6 +32,7 @@ function* deletePreset(action) {
     try {
         yield axios.delete(`/api/userPreset/${action.payload}`);
         console.log('preset deleted');
+        yield put({ type: 'FETCH_PRESETS'})
     } catch (error) {
         // console.log(`error in deletePreset ${error}`);
         alert('Something went wrong');
