@@ -15,11 +15,12 @@ function UserPresets() {
 
     const userPresets = useSelector(store => store.dBPresets);
 
+    // gets presets from DB and updates if store.dBPresets updates (rerenders all minus deleted preset)
     useEffect(() => {
         dispatch({
             type: 'FETCH_PRESETS',
         })
-    }, []);
+    }, [userPresets]);
 
     console.log(userPresets);
 
@@ -59,7 +60,9 @@ function UserPresets() {
                             <DeletePresetButton 
                                 presetId={preset.id}
                             />
-                            <EditPresetButton />
+                            <EditPresetButton 
+                                presetId={preset.id}
+                            />
                         </div>
                     )
                 })

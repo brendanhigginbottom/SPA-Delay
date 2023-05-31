@@ -22,9 +22,6 @@ function* getPreset(action) {
         const presets = yield axios.get('/api/userPreset');
         yield put({ type: 'SET_dBPresets', payload: presets.data });
         console.log(presets.data);
-        console.log(JSON.parse(presets.data[0].user_preset_values));
-        //We can pass functions through actions
-        // action.setNewElement('');
     } catch (error) {
         console.log(`error in getPreset ${error}`);
         alert('Something went wrong');
