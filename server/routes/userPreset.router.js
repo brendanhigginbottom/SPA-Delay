@@ -3,7 +3,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 /**
- * GET route template
+ * GET route 
  */
 router.get('/', (req, res) => {
   // GET route code here
@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
 });
 
 /**
- * POST route template
+ * POST route 
  */
 router.post('/', (req, res) => {
   // POST route code here
@@ -40,6 +40,24 @@ router.post('/', (req, res) => {
       res.sendStatus(500);
     });
   
+});
+
+/**
+ * DELETE route
+ */
+router.delete('/:id', (req, res) => {
+  const presetId = req.params.id;
+  console.log(presetId);
+  const queryText = `
+  DELETE FROM "user_presets" WHERE "id" = $1
+  `;
+
+  pool.query(queryText, [presetId]).then(result => {
+    res.sendStatus(200);
+    }).catch(error => {
+    console.log(`Error in DELETE ${error}`);
+    res.sendStatus(500);
+    })
 });
 
 module.exports = router;

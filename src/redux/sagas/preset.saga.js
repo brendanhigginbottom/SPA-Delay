@@ -22,21 +22,26 @@ function* getPreset(action) {
         const presets = yield axios.get('/api/userPreset');
         yield put({ type: 'SET_dBPresets', payload: presets.data });
         console.log(presets.data);
-        console.log(JSON.parse(presets.data[0].user_preset_values));
-        //We can pass functions through actions
-        // action.setNewElement('');
     } catch (error) {
         console.log(`error in getPreset ${error}`);
         alert('Something went wrong');
     }
 }
 
+function* deletePreset(action) {
+    try {
+        yield axios.delete(`/api/userPreset/${action.payload}`);
+        console.log('preset deleted');
+    } catch (error) {
+        // console.log(`error in deletePreset ${error}`);
+        alert('Something went wrong');
+    }
+} 
 
 function* presetSaga() {
     yield takeLatest('ADD_PRESET', postPreset);
-    yield takeLatest('FETCH_PRESETS', getPreset)
-  }
-
-
+    yield takeLatest('FETCH_PRESETS', getPreset);
+    yield takeLatest('DELETE_PRESET', deletePreset);
+}
 
 export default presetSaga;
