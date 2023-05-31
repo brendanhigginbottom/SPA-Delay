@@ -20,14 +20,9 @@ const setup = async(context, color, filter, mix, feedback, input, time, scale, v
     //color
     const colorParam = device.parametersById.get("color");
     colorParam.value = color;
-    console.log(colorParam.value);
-    console.log(colorParam.min, colorParam.max);
-    console.log(device.parameters[3].value);
     //filter
     const filterParam = device.parametersById.get("filter");
-    console.log(filterParam.enumValues);
     filterParam.enumValue = filter;
-    console.log(filterParam.enumValue);
     //mix
     const mixParam = device.parametersById.get("mix");
     mixParam.value = mix;
@@ -40,8 +35,6 @@ const setup = async(context, color, filter, mix, feedback, input, time, scale, v
     //input
     const inputParam = device.parametersById.get('input');
     inputParam.enumValue = input;
-    console.log(inputParam.enumValue);
-    console.log(input);
     // time 
     const timeParam = device.parametersById.get('time');
     timeParam.value = time

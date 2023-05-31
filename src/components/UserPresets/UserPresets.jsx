@@ -24,6 +24,8 @@ function UserPresets() {
 
     console.log(userPresets);
 
+    // Takes in selected preset's id and loops over user presets to
+    // update audio parameter reducers with the values store in JSON in DB
     const loadPreset = (event) => {
         const presetId = event.target.dataset.id;
         console.log(presetId);
