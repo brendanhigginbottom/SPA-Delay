@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 // /userpreset buttons import (DELETE and PUT)
 import DeletePresetButton from './DeletePresetButton.jsx';
@@ -7,9 +8,7 @@ import EditPresetButton from './EditPresetButton.jsx';
 // Individual user presets
 function Preset(preset) {
     const dispatch = useDispatch();
-
-    console.log(preset);
-    console.log(preset.preset.name);
+    const history = useHistory();
 
     // gets userPresets
     const userPresets = useSelector(store => store.dBPresets);
