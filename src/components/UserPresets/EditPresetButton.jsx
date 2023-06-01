@@ -8,6 +8,7 @@ function EditPresetButton(preset) {
 
     
     const editPreset = () => {
+        console.log(preset);
         dispatch({ type: 'TOGGLE_EDIT', payload: true });
         dispatch({ type: 'SET_PRESET_NAME', payload: preset.presetId.name});
         dispatch({ type: 'SET_PRESET_DESC', payload: preset.presetId.description});

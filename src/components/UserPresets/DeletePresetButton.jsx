@@ -6,7 +6,7 @@ function DeletePresetButton(presetId) {
     const dispatch = useDispatch();
 
     const deletePreset = () => {
-        console.log(presetId.presetId);
+        console.log(presetId);
         dispatch({
             type: 'DELETE_PRESET',
             payload: presetId.presetId,
