@@ -1,16 +1,21 @@
 import { useSelector, useDispatch } from "react-redux";
 
 import StorePresetButton from "../SavePresetButton/StorePresetButton.jsx";
+import StoreEditButton from "./StoreEditButton.jsx";
 
 
 // form that SaveUserPreset button takes user to to enter name and desc of preset
 // Contains StoreUserPreset button that contains POST saga dispatch to POST preset
+// and conditionally renders storeEditPreset button for edit/PUT use
 function SavePreset() {
     // setup for redux
     const dispatch = useDispatch();
     // getting presetName and Desc for character limit
-    const nameChars = useSelector(store => store.presetName).length;
-    const descChars = useSelector(store => store.presetDesc).length;
+    const name = useSelector(store => store.presetName);
+    const desc = useSelector(store => store.presetDesc);
+
+    // getting editToggle for conditional rendering of other buttons
+    const editToggle = useSelector(store => store.editToggle);
 
 
     const handleNameChange = (e) => {
@@ -33,11 +38,19 @@ function SavePreset() {
 
     return (
         <>
-            <h1>/SavePreset</h1>
-            {/* <form> */}
+            {
+                editToggle === false ? (
+                    <h1>Save Preset</h1>
+                ) : <h1>Edit Preset</h1>
+            }
                 <label htmlFor="presetName">Preset Name:</label>
-                <input type="text" id="presetName" onChange={handleNameChange}/>
-                <p>{nameChars}/100</p>
+                <input 
+                    type="text" 
+                    id="presetName" 
+                    onChange={handleNameChange} 
+                    defaultValue={name}
+                />
+                <p>{name.length}/100</p>
                 <br />
                 <label htmlFor="presetDesc">Preset Description:</label>
                 <br />
@@ -46,11 +59,17 @@ function SavePreset() {
                     rows="4" 
                     cols="50"
                     onChange={handleDescChange}
+                    defaultValue={desc}
                 />
-                <p>{descChars}/1000</p>
+                <p>{desc.length}/1000</p>
                 <br />
-                <StorePresetButton />
-            {/* </form> */}
+                {
+                    editToggle === false ? (
+                        <StorePresetButton />
+                    ) : 
+                        <StoreEditButton />
+                }
+                
         </>
     );
 }

@@ -22,6 +22,11 @@ import presetValues from './presetValues.reducer';
 // Reducers for storing info from database
 import dBPresets from './dBPresets.reducer';
 
+// Reducer for editToggle for conditional rendering on SavePreset component
+import editToggle from './editToggle.reducer';
+// stores preset id for PUT sage
+import editPresetId from './editPresetId.reducer';
+
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
 // This is imported in index.js as rootSaga
@@ -45,6 +50,8 @@ const rootReducer = combineReducers({
   presetDesc, // setting preset description
   presetValues, // setting all preset values
   dBPresets, // storing presets retrieved from server
+  editToggle, // toggling boolean for conditional rendering
+  editPresetId, // gets preset Id to pass to sage for PUT
 });
 
 export default rootReducer;

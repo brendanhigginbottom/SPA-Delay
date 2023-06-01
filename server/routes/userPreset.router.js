@@ -60,4 +60,23 @@ router.delete('/:id', (req, res) => {
     })
 });
 
+/**
+ * PUT route
+ */
+
+router.put('/:id', (req, res) => {
+  console.log(req.body.name);
+  const id = req.params.id;
+  const name  = req.body.name;
+  const queryText = `
+    UPDATE "user_presets" SET "name" = $1 WHERE "id" = $2;
+  `;
+  pool.query(queryText, [name, id]).then(result => {
+    res.sendStatus(200);
+  }).catch(error => {
+    console.log(`error in PUT ${error}`);
+    res.sendStatus(500);
+  })
+})
+
 module.exports = router;
