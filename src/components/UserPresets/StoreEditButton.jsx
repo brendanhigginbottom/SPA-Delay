@@ -19,7 +19,7 @@ function StoreEditButton() {
         });
         // toggle for conditional rendering of SavePreset component
         dispatch({ type: 'TOGGLE_EDIT', payload: false});
-        // history.push('/mypresets');
+        history.push('/mypresets');
     };
 
     return (

@@ -68,10 +68,12 @@ router.put('/:id', (req, res) => {
   console.log(req.body.name);
   const id = req.params.id;
   const name  = req.body.name;
+  const desc = req.body.desc;
   const queryText = `
-    UPDATE "user_presets" SET "name" = $1 WHERE "id" = $2;
+    UPDATE "user_presets" SET "name" = $1, "description" = $2
+    WHERE "id" = $3;
   `;
-  pool.query(queryText, [name, id]).then(result => {
+  pool.query(queryText, [name, desc, id]).then(result => {
     res.sendStatus(200);
   }).catch(error => {
     console.log(`error in PUT ${error}`);
