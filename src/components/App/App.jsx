@@ -42,7 +42,7 @@ function App() {
         <Nav />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
-          <Redirect exact from="/" to="/home" />
+          <Redirect exact from="/" to="/main" />
 
           {/* Visiting localhost:3000/about will show the about page. */}
           <Route
@@ -51,6 +51,14 @@ function App() {
             path="/about"
           >
             <AboutPage />
+          </Route>
+
+          <Route
+            // loged in shows MainView else shows LoginPage
+            exact
+            path="/main"
+          >
+            <MainView />
           </Route>
 
           {/* For protected routes, the view could show one of several things on the same route.
@@ -73,13 +81,13 @@ function App() {
             <InfoPage />
           </ProtectedRoute>
 
-          <ProtectedRoute
+          {/* <ProtectedRoute
             // loged in shows MainView else shows LoginPage
             exact
             path="/main"
           >
             <MainView />
-          </ProtectedRoute>
+          </ProtectedRoute> */}
 
           <ProtectedRoute
             // logged in shows UserPresets else shows LoginPage
