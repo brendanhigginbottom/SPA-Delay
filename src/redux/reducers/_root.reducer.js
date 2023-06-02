@@ -27,6 +27,9 @@ import editToggle from './editToggle.reducer';
 // stores preset id for PUT sage
 import editPresetId from './editPresetId.reducer';
 
+// Toggle for basic/all parameter view
+import paramView from './paramView.reducer';
+
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
 // This is imported in index.js as rootSaga
@@ -52,6 +55,7 @@ const rootReducer = combineReducers({
   dBPresets, // storing presets retrieved from server
   editToggle, // toggling boolean for conditional rendering
   editPresetId, // gets preset Id to pass to sage for PUT
+  paramView, // toggle param view between basic and all params
 });
 
 export default rootReducer;
