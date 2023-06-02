@@ -9,7 +9,9 @@ router.get('/', (req, res) => {
   // GET route code here
   const userId = req.user.id;
   const queryText = ` 
-  SELECT * FROM "user_presets" WHERE "user_id" = $1;
+  SELECT * FROM "user_presets" 
+  WHERE "user_id" = $1
+  ORDER BY "updated_at" DESC;
   `;
   pool.query(queryText, [userId]).then(result => {
     res.send(result.rows)
@@ -69,9 +71,10 @@ router.put('/:id', (req, res) => {
   const id = req.params.id;
   const name  = req.body.name;
   const desc = req.body.desc;
+  const time = 'TIMESTAMP';
   const queryText = `
     UPDATE "user_presets" SET "name" = $1, "description" = $2
-    WHERE "id" = $3;
+    WHERE "id" = $3
   `;
   pool.query(queryText, [name, desc, id]).then(result => {
     res.sendStatus(200);
