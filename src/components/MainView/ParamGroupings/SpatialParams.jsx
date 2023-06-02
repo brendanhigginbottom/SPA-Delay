@@ -1,4 +1,4 @@
-
+import Spread from "../ParamComponents/Spread";
 
 // contains components for spatial-based params
 function SpatialParams() {
@@ -6,7 +6,7 @@ function SpatialParams() {
 
     return (
         <>
-        
+            <Spread />
         </>
     );
 }

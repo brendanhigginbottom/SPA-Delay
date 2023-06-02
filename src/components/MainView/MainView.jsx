@@ -2,7 +2,10 @@ import { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import handleAudioPlay from './handleAudioPlay';
 // Import for delay param sliders
-import ParamSliders from './ParamSliders.jsx';
+import AllParamsCheck from './AllParamsCheck';
+import BasicViewSliders from './BasicViewSliders.jsx';
+import AllSliders from './AllSliders';
+
 // Import for SavePresetButton
 import SavePresetButton from '../SavePresetButton/SavePresetButton';
 
@@ -23,6 +26,9 @@ function WebAudioTest3() {
     const volume = useSelector(store => store.volume);
     const feedbackCheck = useSelector(store => store.feedbackCheck);
     const spread = useSelector(store => store.spread);
+
+    // Redux getting paramView to toggle param slider
+    const toggle = useSelector(store => store.paramView);
 
     //useRef to get audio file
     const audioRef = useRef();
@@ -59,6 +65,8 @@ function WebAudioTest3() {
     return (
         <div>
             <h1>D e  l   a    y</h1>
+            <AllParamsCheck />
+            <br />
             {/* Create file selector */}
             <label htmlFor="audio">Choose a sound:</label>
             <select onChange={handleAudioSelection} name="audio" id="audio">
@@ -68,7 +76,7 @@ function WebAudioTest3() {
                 <option value="./export/media/SPADelayTest3.mp3">Test 3</option>
                 <option value="./export/media/SPADelayTest4.mp3">Test 4</option>
             </select>
-            {/* If file selected, render <audio> element, play button, and audio param sliders*/}
+            {/* If file selected, render <audio> element and play button*/}
             {file ? (
                 <audio
                     ref={audioRef}
@@ -91,10 +99,11 @@ function WebAudioTest3() {
             ) :
                 <></>
             }
-            {file ? (
-                <ParamSliders />
+            <br />
+             {toggle === '1' ? (
+                <BasicViewSliders />
             ) :
-                <></>
+                <AllSliders />
             }
             <br />
             {file ? (
