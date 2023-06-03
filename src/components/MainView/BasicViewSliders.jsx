@@ -14,7 +14,10 @@ function BasicViewSliders() {
     return (
         <>
             <Box sx={{ width: .95, margin: "auto" }}>
-                <Card sx={{ margin: "auto", width: 1, display: "inline-block", }}>
+                <Card 
+                    sx={{ margin: "auto", width: 1, display: "inline-block", }}
+                    variant="outlined"
+                >
                     <CardContent sx={{ mx: "1em" }}>
                         <InputCheck />
                         <Time />
