@@ -1,5 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 
+// imports for MUI
+import { Slider } from "@mui/material";
+
 // Handles dispatch for Time param and returns Time slider
 function Time() {
     const dispatch = useDispatch();
@@ -15,17 +18,16 @@ function Time() {
 
     return (
         <div>
-            <label htmlFor="time">Set Time value:</label>
-            <input
-                type="range"
+            <label htmlFor="time">Set Time value: {time}</label>
+            <Slider
+                size="small" 
+                aria-label="Time" 
                 id="time"
-                min="0"
-                max="100"
-                step="1"
-                defaultValue={time}         
-                onChange={handleTimeChange}
+                min={0}
+                max={100}
+                value={time} 
+                onChange={handleTimeChange} 
             />
-            <p>Time: {time}</p>
         </div>
     );
 }

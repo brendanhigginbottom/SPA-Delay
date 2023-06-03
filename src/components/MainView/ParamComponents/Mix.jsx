@@ -1,5 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 
+// imports for MUI
+import { Slider } from "@mui/material";
+
 // Handles dispatch for Mix param and returns Mix slider
 function Mix() {
     const dispatch = useDispatch();
@@ -15,15 +18,15 @@ function Mix() {
 
     return (
         <div>
-            <label htmlFor="mix">Set Mix value:</label>
-            <input
-                type="range"
+            <label htmlFor="mix">Set Mix value: {mix} </label>
+            <Slider
+                size="small" 
+                aria-label="Mix" 
                 id="mix"
-                min="0"
-                max="100"
-                step="1"
-                defaultValue={mix}         
-                onChange={handleMixChange}
+                min={0}
+                max={100}
+                value={mix} 
+                onChange={handleMixChange} 
             />
             <p>Mix: {mix}</p>
         </div>

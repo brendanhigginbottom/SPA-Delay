@@ -1,5 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 
+// imports for MUI
+import { Slider } from "@mui/material";
+
 // Handles dispatch for Volume param and returns Volume slider
 function Volume() {
     const dispatch = useDispatch();
@@ -15,17 +18,16 @@ function Volume() {
 
     return (
         <div>
-            <label htmlFor="volume">Set Volume value:</label>
-            <input
-                type="range"
+            <label htmlFor="volume">Set Volume value: {volume}</label>
+            <Slider
+                size="small" 
+                aria-label="Volume" 
                 id="volume"
-                min="-100"
-                max="100"
-                step="1"
-                defaultValue={volume}         
-                onChange={handleVolumeChange}
+                min={-100}
+                max={100}
+                value={volume} 
+                onChange={handleVolumeChange} 
             />
-            <p>Volume: {volume}</p>
         </div>
     );
 }

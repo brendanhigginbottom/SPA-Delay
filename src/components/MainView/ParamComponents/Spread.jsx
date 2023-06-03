@@ -1,5 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 
+// imports for MUI
+import { Slider } from "@mui/material";
+
 // Handles dispatch for Spread param and returns Spread slider
 function Spread() {
     const dispatch = useDispatch();
@@ -15,17 +18,16 @@ function Spread() {
 
     return (
         <div>
-            <label htmlFor="spread">Set Spread value:</label>
-            <input
-                type="range"
+            <label htmlFor="spread">Set Spread value: {spread}</label>
+             <Slider
+                size="small" 
+                aria-label="Spread" 
                 id="spread"
-                min="-100"
-                max="100"
-                step="1"
-                defaultValue={spread}         
-                onChange={handleSpreadChange}
+                min={0}
+                max={100}
+                value={spread} 
+                onChange={handleSpreadChange} 
             />
-            <p>Spread: {spread}</p>
         </div>
     );
 }

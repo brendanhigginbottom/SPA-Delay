@@ -1,5 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 
+// imports for MUI
+import { Slider } from "@mui/material";
+
 // Handles dispatch for Feedback param and returns Feedback slider
 function Feedback() {
     const dispatch = useDispatch();
@@ -16,17 +19,16 @@ function Feedback() {
 
     return (
         <div>
-            <label htmlFor="feedback">Set Feedback value:</label>
-            <input
-                type="range"
+            <label htmlFor="feedback">Set Feedback value: {feedback}</label>
+            <Slider
+                size="small" 
+                aria-label="Feedback" 
                 id="feedback"
-                min="0"
-                max="100"
-                step="1"
-                defaultValue={feedback}
-                onChange={handleFeedbackChange}
+                min={0}
+                max={100}
+                value={feedback} 
+                onChange={handleFeedbackChange} 
             />
-            <p>Feedback: {feedback}</p>
         </div>
     );
 }
