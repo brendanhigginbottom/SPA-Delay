@@ -4,6 +4,9 @@ import SpatialParams from "./ParamGroupings/SpatialParams";
 import TimeParams from "./ParamGroupings/TimeParams";
 import VolumeParams from "./ParamGroupings/VolumeParams";
 
+// imports for MUI
+import { Box } from "@mui/material";
+
 // Contains audio param slider components grouped by
 // effect type
 function AllSliders() {
@@ -11,12 +14,13 @@ function AllSliders() {
 
     return (
         <>
-            <VolumeParams />
-            <FeedbackParams />
-            <TimeParams />
-            <FilterParams />
-            <SpatialParams />
-
+            <Box sx={{ width: .95, margin: "auto" }}>
+                <VolumeParams />
+                <FeedbackParams />
+                <TimeParams />
+                <FilterParams />
+                <SpatialParams />
+            </Box>
         </>
     );
 }
