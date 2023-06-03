@@ -1,5 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 
+// import for MUI
+import Switch  from "@mui/material/Switch";
+
 // Handles dispatch for Feedback On/Off param and returns Feedback On/Off toggle
 function FeedbackCheck() {
     const dispatch = useDispatch();
@@ -13,7 +16,7 @@ function FeedbackCheck() {
             "0",
             "1"
         ]
-        if (feedbackIsChecked.checked === false) {
+        if (feedbackIsChecked.checked === true) {
             dispatch({
                 type: 'SET_FEEDBACK_CHECK',
                 payload: feedbackValue[1],
@@ -30,15 +33,16 @@ function FeedbackCheck() {
     return (
         <>
             <label htmlFor="feedbackCheck">Feedback: </label>
-            <input type="checkbox" 
-                id="feedbackCheck" 
-                onChange={handleFeedbackCheckChange} 
-            />
             {feedbackCheck === "1" ? (
                 <>On</>
             ) :
                 <>Off</>
             }
+            <Switch 
+                defaultChecked
+                id="feedbackCheck"
+                onChange={handleFeedbackCheckChange}
+            />
         </>
     );
 }

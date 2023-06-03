@@ -53,6 +53,7 @@ function Scale() {
                     id="scale"
                     min={0}
                     max={6}
+                    defaultValue={3}
                     getAriaValueText={scaleText}
                     step={1}
                     marks={marks}

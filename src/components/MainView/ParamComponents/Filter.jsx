@@ -1,9 +1,25 @@
 import { useSelector, useDispatch } from "react-redux";
 
+// imports for MUI
+import { Slider } from "@mui/material";
+
 // Handles dispatch for Filter param and returns Filter slider
 function Filter() {
     const dispatch = useDispatch();
     const filter = useSelector(store => store.filter);
+
+    // contains objects for displying scale type below slider 
+    const marks = [
+        { value: 0, label: 'None', },
+        { value: 1, label: 'Low Pass', },
+        { value: 2, label: 'High Pass', },
+        { value: 3, label: 'Band Pass', },
+        { value: 4, label: 'Notch', },
+    ];
+
+    const filterText = (value) => {
+        return `${value}`
+    }
 
     const handleFilterChange = (e) => {
         const filterNumValue = Number(e.target.value);
@@ -21,39 +37,22 @@ function Filter() {
         })
     };
 
-     //! Return to this for QoL
-    // Display filter text 
-    // This is necessary because I need to pass abbreviations
-    // to enumValue on delay but want user to see full name
-    // const handleFilterText = () => {
-    //     const filterNumValue = Number(document.querySelector('#filter').value);
-    //     console.log(filterNumValue)
-    //     const filterNames = [
-    //         'None',
-    //         'Low Pass',
-    //         'High Pass',
-    //         'Band Pass',
-    //         'Notch'
-    //     ];
-
-    //     return filterNames[filterNumValue];
-
-    // }
 
     return (
         <>
             <div>
-                <label htmlFor="filter">Set Filter type:</label>
-                <input
-                    type="range"
+                <label htmlFor="filter">Set Filter type: {filter} </label>
+                <Slider
+                    size="small"
+                    aria-label="Custom marks"
                     id="filter"
-                    min="0"
-                    max="4"
-                    step="1"
-                    defaultValue={filter}
+                    min={0}
+                    max={4}
+                    getAriaValueText={filterText}
+                    step={1}
+                    marks={marks}
                     onChange={handleFilterChange}
                 />
-                <p>Filter type: {filter}</p>
             </div>
         </>
     );

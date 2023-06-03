@@ -1,5 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 
+// import for MUI
+import Switch  from "@mui/material/Switch";
+
 // Handles dispatch for Input param and returns Input toggle
 function InputCheck() {
     const dispatch = useDispatch();
@@ -13,14 +16,12 @@ function InputCheck() {
             "0",
             "1"
         ]
-        if (inputIsChecked.checked === false) {
-            // inputValue = 1;
+        if (inputIsChecked.checked === true) {
             dispatch({
                 type: 'SET_INPUT',
                 payload: inputValue[1],
             });
         } else {
-            // inputValue = 0;
             dispatch({
                 type: 'SET_INPUT',
                 payload: inputValue[0],
@@ -32,12 +33,16 @@ function InputCheck() {
     return (
         <>
             <label htmlFor="input">Input: </label>
-            <input type="checkbox" id="input" onChange={handleInputChange} />
             {input === "1" ? (
                 <>On</>
             ) :
                 <>Off</>
             }
+            <Switch 
+                defaultChecked
+                id="input"
+                onChange={handleInputChange}
+            />
         </>
     );
 }

@@ -65,8 +65,6 @@ function WebAudioTest3() {
     return (
         <div>
             <h1>D e  l   a    y</h1>
-            <AllParamsCheck />
-            <br />
             {/* Create file selector */}
             <label htmlFor="audio">Choose a sound:</label>
             <select onChange={handleAudioSelection} name="audio" id="audio">
@@ -76,6 +74,8 @@ function WebAudioTest3() {
                 <option value="./export/media/SPADelayTest3.mp3">Test 3</option>
                 <option value="./export/media/SPADelayTest4.mp3">Test 4</option>
             </select>
+            <br />
+            <AllParamsCheck />
             {/* If file selected, render <audio> element and play button*/}
             {file ? (
                 <audio
