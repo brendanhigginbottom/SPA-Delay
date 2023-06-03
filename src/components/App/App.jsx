@@ -31,6 +31,25 @@ function App() {
   const dispatch = useDispatch();
 
   const user = useSelector(store => store.user);
+  // get presetValues reducer. If it has values, unregistered user clicked "Save Preset"
+  // and will be directed to /savepreset. Otherwise, they click "login / register " and
+  // are redirected to the delay.
+  const isPreset = useSelector(store => store.presetValues);
+
+  // conditionally routes unregistered user based on whether they went to nav bar
+  // or tried to save preset while not logged in
+  const presetOrNot = () => {
+    if (user.id && Object.keys(isPreset).length === 0) {
+      // If the user is already logged in, 
+      // redirect them to the /main page
+        return <Redirect to="/main" />
+      } else if (user.id && Object.keys(isPreset).length > 0) {
+        return <Redirect to="/savepreset" />
+      } else {
+        // Otherwise, show the registration page
+        return <RegisterPage />
+      }
+  }
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
@@ -54,7 +73,7 @@ function App() {
           </Route>
 
           <Route
-            // loged in shows MainView else shows LoginPage
+            // Default shows MainView 
             exact
             path="/main"
           >
@@ -80,14 +99,6 @@ function App() {
           >
             <InfoPage />
           </ProtectedRoute>
-
-          {/* <ProtectedRoute
-            // loged in shows MainView else shows LoginPage
-            exact
-            path="/main"
-          >
-            <MainView />
-          </ProtectedRoute> */}
 
           <ProtectedRoute
             // logged in shows UserPresets else shows LoginPage
@@ -135,14 +146,9 @@ function App() {
             exact
             path="/registration"
           >
-            {user.id ?
-              // If the user is already logged in, 
-              // redirect them to the /user page
-              <Redirect to="/user" />
-              :
-              // Otherwise, show the registration page
-              <RegisterPage />
-            }
+            {/* conditionally routes unregistered user based on whether they went to nav bar
+            or tried to save preset while not logged in */}
+            {presetOrNot()}
           </Route>
 
           <Route

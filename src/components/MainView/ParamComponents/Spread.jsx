@@ -23,7 +23,7 @@ function Spread() {
                 size="small" 
                 aria-label="Spread" 
                 id="spread"
-                min={0}
+                min={-100}
                 max={100}
                 value={spread} 
                 onChange={handleSpreadChange} 

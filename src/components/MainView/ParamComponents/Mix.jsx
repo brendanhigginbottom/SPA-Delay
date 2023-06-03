@@ -28,7 +28,6 @@ function Mix() {
                 value={mix} 
                 onChange={handleMixChange} 
             />
-            <p>Mix: {mix}</p>
         </div>
     );
 }
