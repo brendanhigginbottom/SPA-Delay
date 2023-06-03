@@ -13,6 +13,10 @@ function Nav() {
         <h2 className="nav-title">SPA-Delay</h2>
       </Link>
       <div>
+        <Link className="navLink" to="/main">
+            Delay
+        </Link>
+
         {/* If no user is logged in, show these links */}
         {!user.id && (
           // If there's no user, show login/registration links
@@ -28,9 +32,9 @@ function Nav() {
               Home
             </Link>
 
-            <Link className="navLink" to="/main">
+            {/* <Link className="navLink" to="/main">
               Delay
-            </Link>
+            </Link> */}
 
             <Link className="navLink" to="/info">
               Info Page
@@ -38,10 +42,6 @@ function Nav() {
 
             <Link className="navLink" to="/mypresets">
               My Presets
-            </Link>
-
-            <Link className="navLink" to="/communitypresets">
-              Community Presets
             </Link>
 
             <LogOutButton className="navLink" />
