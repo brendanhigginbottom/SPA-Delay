@@ -37,3 +37,6 @@ CREATE TRIGGER update_user_presets_updated_at
         user_presets
     FOR EACH ROW
 EXECUTE PROCEDURE update_updated_at_user_presets();
+
+-- Function and trigger code taken from here:
+-- https://stackoverflow.com/questions/9556474/how-do-i-automatically-update-a-timestamp-in-postgresql
