@@ -65,9 +65,12 @@ function WebAudioTest3() {
 
     return (
         <div>
-            <Card sx={{ marginx: "1em", width: 1, display: "flex", justifyContent: "space-evenly" }}>
+            <Card 
+                sx={{ marginx: "1em", width: 1, display: "flex", justifyContent: "space-evenly" }}
+                style={{ backgroundColor: '#F8A505'}}
+            >
                 {/* Create file selector */}
-                <Box>
+                <Box>                
                 <InputLabel id="audio">Choose a sound:</InputLabel>
                 <Select
                     labelId="audio"
@@ -96,11 +99,13 @@ function WebAudioTest3() {
                 {file ? (
                     <Box>
                     <Button
-                        variant="contained"
+                        variant="outlined"
                         id="playButton"
                         role="switch"
                         aria-checked="false"
                         onClick={audioPlay}
+                        sx={{backgroundColor: "#363737", color: "white"}}
+                        disableTouchRipple
                     >Play/Pause
                     </Button>
                     </Box>

@@ -1,3 +1,4 @@
+import { Button } from '@mui/material';
 import { useDispatch } from 'react-redux';
 
 // delete button for use in /userpresets
@@ -14,7 +15,11 @@ function DeletePresetButton(presetId) {
 
     return (
         <>
-            <button onClick={deletePreset}>Delete Preset</button>
+            <Button 
+                onClick={deletePreset}
+                sx={{backgroundColor: "#363737", color: "#F8A505"}}
+            >Delete Preset
+            </Button>
         </>
     );
 }

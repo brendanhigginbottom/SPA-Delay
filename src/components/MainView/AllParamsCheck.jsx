@@ -43,7 +43,7 @@ function AllParamsCheck() {
             <Switch 
                 id="allParams"
                 onChange={handleChange}
-                color="warning"
+                color="default"
             />
         </Box>
     );
