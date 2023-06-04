@@ -1,3 +1,4 @@
+import { Button } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
@@ -23,7 +24,13 @@ function StorePresetButton() {
 
     return (
         <>
-            <button id="storePreset" onClick={storePreset}>Save Preset</button>
+            <Button 
+                variant="contained" 
+                id="storePreset" 
+                onClick={storePreset}
+                sx={{backgroundColor: "#363737"}}
+            >Save Preset
+            </Button>
         </>
     );
 }

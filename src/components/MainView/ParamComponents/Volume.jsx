@@ -27,6 +27,7 @@ function Volume() {
                 max={100}
                 value={volume} 
                 onChange={handleVolumeChange} 
+                sx={{color: "#f06a11"}}
             />
         </div>
     );

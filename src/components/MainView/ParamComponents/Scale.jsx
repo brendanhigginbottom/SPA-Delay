@@ -58,6 +58,8 @@ function Scale() {
                     step={1}
                     marks={marks}
                     onChange={handleScaleChange}
+                    sx={{color: "#f06a11"}}
+                    // style={{color: 'white'}}
                 />
             </div>
         </>

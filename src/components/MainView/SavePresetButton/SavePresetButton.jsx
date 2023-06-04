@@ -1,5 +1,6 @@
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { Box, Button } from '@mui/material';
 
 
 // button navigates user to /savepreset where the dispatch will 
@@ -43,9 +44,14 @@ function SavePresetButton() {
     }
 
     return (
-        <>
-            <button onClick={savePreset}>Save Preset</button>
-        </>
+        <Box>
+            <Button 
+                variant="outlined" 
+                onClick={savePreset}
+                sx={{backgroundColor: "#363737", color: "white"}}
+            >Save Preset
+            </Button>
+        </Box>
     );
 }
 

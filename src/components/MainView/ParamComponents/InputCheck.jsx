@@ -42,6 +42,7 @@ function InputCheck() {
                 defaultChecked
                 id="input"
                 onChange={handleInputChange}
+                color="warning"
             />
         </>
     );

@@ -9,7 +9,7 @@ function Nav() {
 
   return (
     <div className="nav">
-      <Link to="/home">
+      <Link to="/main">
         <h2 className="nav-title">SPA-Delay</h2>
       </Link>
       <div>
@@ -36,9 +36,9 @@ function Nav() {
               Delay
             </Link> */}
 
-            <Link className="navLink" to="/info">
+            {/* <Link className="navLink" to="/info">
               Info Page
-            </Link>
+            </Link> */}
 
             <Link className="navLink" to="/mypresets">
               My Presets

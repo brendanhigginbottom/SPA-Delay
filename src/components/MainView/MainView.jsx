@@ -7,7 +7,8 @@ import BasicViewSliders from './BasicViewSliders.jsx';
 import AllSliders from './AllSliders';
 
 // Import for SavePresetButton
-import SavePresetButton from '../SavePresetButton/SavePresetButton';
+import SavePresetButton from './SavePresetButton/SavePresetButton';
+import { Box, Button, Card, InputLabel, MenuItem, Select } from '@mui/material';
 
 
 function WebAudioTest3() {
@@ -64,53 +65,64 @@ function WebAudioTest3() {
 
     return (
         <div>
-            <h1>D e  l   a    y</h1>
-            {/* Create file selector */}
-            <label htmlFor="audio">Choose a sound:</label>
-            <select onChange={handleAudioSelection} name="audio" id="audio">
-                <option>Select a sound</option>
-                <option value="./export/media/SPADelayTest.mp3">Test 1</option>
-                <option value="./export/media/SPADelayTest2.mp3">Test 2</option>
-                <option value="./export/media/SPADelayTest3.mp3">Test 3</option>
-                <option value="./export/media/SPADelayTest4.mp3">Test 4</option>
-            </select>
-            <br />
-            <AllParamsCheck />
-            {/* If file selected, render <audio> element and play button*/}
-            {file ? (
-                <audio
-                    ref={audioRef}
-                    id="audioElement"
-                    src={file}
-                    type="audio/mpeg"
-                />
-            ) :
-                <></>
-            }
-            {file ? (
-                <button
-                    id="playButton"
-                    role="switch"
-                    aria-checked="false"
-                    onClick={audioPlay}
-                >Play/Pause
-                </button>
+            <Card 
+                sx={{ marginx: "1em", width: 1, display: "flex", justifyContent: "space-evenly" }}
+                style={{ backgroundColor: '#F8A505'}}
+            >
+                {/* Create file selector */}
+                <Box>                
+                <InputLabel id="audio">Choose a sound:</InputLabel>
+                <Select
+                    labelId="audio"
+                    id="audio"
+                    label="Sound"
+                    onChange={handleAudioSelection}
+                >
+                    <MenuItem value="./export/media/SPADelayTest.mp3">Test 1</MenuItem>
+                    <MenuItem value="./export/media/SPADelayTest2.mp3">Test 2</MenuItem>
+                    <MenuItem value="./export/media/SPADelayTest3.mp3">Test 3</MenuItem>
+                    <MenuItem value="./export/media/SPADelayTest4.mp3">Test 4</MenuItem>
+                </Select>
+                </Box>
+                <br />
+                {/* If file selected, render <audio> element and play button*/}
+                {file ? (
+                    <audio
+                        ref={audioRef}
+                        id="audioElement"
+                        src={file}
+                        type="audio/mpeg"
+                    />
+                ) :
+                    <></>
+                }
+                {file ? (
+                    <Box>
+                    <Button
+                        variant="outlined"
+                        id="playButton"
+                        role="switch"
+                        aria-checked="false"
+                        onClick={audioPlay}
+                        sx={{backgroundColor: "#363737", color: "white"}}
+                        disableTouchRipple
+                    >Play/Pause
+                    </Button>
+                    </Box>
 
-            ) :
-                <></>
-            }
+                ) :
+                    <></>
+                }
+                <AllParamsCheck />
+                <SavePresetButton />
+            </Card>
             <br />
-             {toggle === '1' ? (
+            {toggle === '1' ? (
                 <BasicViewSliders />
             ) :
                 <AllSliders />
             }
             <br />
-            {file ? (
-                <SavePresetButton />
-            ) :
-                <></>
-            }
         </div>
     );
 }

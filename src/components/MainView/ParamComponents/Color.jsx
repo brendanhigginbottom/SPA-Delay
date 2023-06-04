@@ -26,7 +26,8 @@ function Color() {
                 min={0}
                 max={100}
                 value={color} 
-                onChange={handleColorChange} 
+                onChange={handleColorChange}
+                sx={{color: "#f06a11"}}
             />
         </div>
     );

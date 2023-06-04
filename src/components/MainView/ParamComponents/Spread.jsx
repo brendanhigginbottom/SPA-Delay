@@ -27,6 +27,7 @@ function Spread() {
                 max={100}
                 value={spread} 
                 onChange={handleSpreadChange} 
+                sx={{color: "#f06a11"}}
             />
         </div>
     );

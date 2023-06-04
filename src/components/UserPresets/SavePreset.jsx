@@ -1,7 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
 
-import StorePresetButton from "../SavePresetButton/StorePresetButton.jsx";
+import StorePresetButton from "../MainView/SavePresetButton/StorePresetButton.jsx";
 import StoreEditButton from "./StoreEditButton.jsx";
+import { Box } from "@mui/material";
+import Footer from "../Footer/Footer.jsx";
 
 
 // form that SaveUserPreset button takes user to to enter name and desc of preset
@@ -38,38 +40,45 @@ function SavePreset() {
 
     return (
         <>
-            {
-                editToggle === false ? (
-                    <h1>Save Preset</h1>
-                ) : <h1>Edit Preset</h1>
-            }
+            <Box
+                sx={{ marginLeft: "1em" }}
+                style={{ color: "white" }}
+            >
+                {
+                    editToggle === false ? (
+                        <h1>Save Preset</h1>
+                    ) : <h1>Edit Preset</h1>
+                }
                 <label htmlFor="presetName">Preset Name:</label>
-                <input 
-                    type="text" 
-                    id="presetName" 
-                    onChange={handleNameChange} 
+                <input
+                    type="text"
+                    id="presetName"
+                    onChange={handleNameChange}
                     defaultValue={name}
+                    required
                 />
                 <p>{name.length}/100</p>
                 <br />
                 <label htmlFor="presetDesc">Preset Description:</label>
                 <br />
-                <textarea 
-                    id="presetDesc" 
-                    rows="4" 
+                <textarea
+                    id="presetDesc"
+                    rows="4"
                     cols="50"
                     onChange={handleDescChange}
                     defaultValue={desc}
+                    required
                 />
                 <p>{desc.length}/1000</p>
                 <br />
                 {
                     editToggle === false ? (
                         <StorePresetButton />
-                    ) : 
+                    ) :
                         <StoreEditButton />
                 }
-                
+
+            </Box>
         </>
     );
 }

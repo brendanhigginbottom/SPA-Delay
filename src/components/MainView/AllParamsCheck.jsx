@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 // import for MUI
 import Switch  from "@mui/material/Switch";
+import { Box } from "@mui/material";
 
 // Handles dispatch for toggling parameter slider view and returns param view toggle
 function AllParamsCheck() {
@@ -31,7 +32,7 @@ function AllParamsCheck() {
 
 
     return (
-        <>
+        <Box>
             <label htmlFor="allParams">Parameter View: </label>
             {/* <input type="checkbox" id="allParams" onChange={handleChange} /> */}
             {toggle === "1" ? (
@@ -42,8 +43,9 @@ function AllParamsCheck() {
             <Switch 
                 id="allParams"
                 onChange={handleChange}
+                color="default"
             />
-        </>
+        </Box>
     );
 }
 

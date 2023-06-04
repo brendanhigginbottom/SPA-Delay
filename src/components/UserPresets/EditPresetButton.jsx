@@ -1,3 +1,4 @@
+import { Button } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
@@ -17,7 +18,12 @@ function EditPresetButton(preset) {
 
     return (
         <>
-            <button onClick={editPreset}>Edit Preset</button>
+            <Button 
+                onClick={editPreset}
+                sx={{backgroundColor: "#363737", color: "#F8A505"}}
+                variant="outlined"
+            >Edit Preset
+            </Button>
         </>
     );
 }
