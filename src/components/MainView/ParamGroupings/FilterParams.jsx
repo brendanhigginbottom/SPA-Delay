@@ -13,7 +13,7 @@ const FilterTooltip = styled(({ className, ...props }) => (
     [`& .${tooltipClasses.tooltip}`]: {
         backgroundColor: 'white',
         color: 'black',
-        width: 400,
+        maxWidth: "none",
         fontSize: theme.typography.pxToRem(20),
         border: '1px solid #dadde9',
     },
@@ -33,8 +33,8 @@ function FilterParams() {
                     <FilterTooltip
                         title={
                             <React.Fragment>
-                                <em>Filter</em> <br />
-                                <em>Test</em>
+                                <em>Filter type: Sets the type of filter applied to the delayed sound</em> <br />
+                                <em>Color: Sets cutoff frequency of selected filter (100 Hz - 50 kHz)</em>
                             </React.Fragment>
                         }
                         arrow

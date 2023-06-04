@@ -10,13 +10,14 @@ import React from "react";
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 import { styled } from '@mui/material/styles';
 
+// tooltip styling
 const BasicDelayTooltip = styled(({ className, ...props }) => (
     <Tooltip {...props} classes={{ popper: className }} />
 ))(({ theme }) => ({
     [`& .${tooltipClasses.tooltip}`]: {
         backgroundColor: 'white',
         color: 'black',
-        width: 400,
+        maxWidth: "none",
         fontSize: theme.typography.pxToRem(20),
         border: '1px solid #dadde9',
     },
@@ -24,7 +25,6 @@ const BasicDelayTooltip = styled(({ className, ...props }) => (
 
 // contains grouping of Basic View slider components
 function BasicViewSliders() {
-
 
     return (
         <>
@@ -38,8 +38,11 @@ function BasicViewSliders() {
                         <BasicDelayTooltip
                             title={
                                 <React.Fragment>
-                                    <em>Basic Delay</em> <br />
-                                    <em>Test</em>
+                                    <em>Input: Passes audio to delay (On/Off).</em> <br />
+                                    <em>Time: Sets the time-basis of the delay length.</em> <br />
+                                    <em>Feedback: Sets the amount of delayed signal fed back into delay.</em> <br />
+                                    <em><b>Be careful setting Feedback over ~80!</b></em> <br />
+                                    <em>Mix: Sets the balance between original and delayed signal.</em>
                                 </React.Fragment>
                             }
                             arrow

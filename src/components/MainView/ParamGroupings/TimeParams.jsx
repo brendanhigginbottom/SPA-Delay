@@ -14,7 +14,7 @@ const TimeTooltip = styled(({ className, ...props }) => (
     [`& .${tooltipClasses.tooltip}`]: {
         backgroundColor: 'white',
         color: 'black',
-        width: 400,
+        maxWidth: "none",
         fontSize: theme.typography.pxToRem(20),
         border: '1px solid #dadde9',
     },
@@ -35,8 +35,8 @@ function TimeParams() {
                     <TimeTooltip
                         title={
                             <React.Fragment>
-                                <em>Time</em> <br />
-                                <em>Test</em>
+                                <em>Time: Sets the time-basis of the delay length.</em> <br />
+                                <em>Scale: Sets scaling factor of delay time defined by Time parameter</em> <br />
                             </React.Fragment>
                         }
                         arrow

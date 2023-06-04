@@ -13,7 +13,7 @@ const FeedbackTooltip = styled(({ className, ...props }) => (
     [`& .${tooltipClasses.tooltip}`]: {
         backgroundColor: 'white',
         color: 'black',
-        width: 400,
+        maxWidth: "none",
         fontSize: theme.typography.pxToRem(20),
         border: '1px solid #dadde9',
     },
@@ -33,8 +33,9 @@ function FeedbackParams() {
                     <FeedbackTooltip
                         title={
                             <React.Fragment>
-                                <em>Feedback</em> <br />
-                                <em>Test</em>
+                                <em>Feedback On/Off: Toggles whether feedback is introduced to signal</em> <br />
+                                <em><b>Be careful setting Feedback over ~80!</b></em> <br />
+                                <em>Feedback: Sets the amount of delayed signal fed back into delay.</em> <br />
                             </React.Fragment>
                         }
                         arrow

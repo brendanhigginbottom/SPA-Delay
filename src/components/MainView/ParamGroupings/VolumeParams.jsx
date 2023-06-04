@@ -15,7 +15,7 @@ const VolumeTooltip = styled(({ className, ...props }) => (
     [`& .${tooltipClasses.tooltip}`]: {
         backgroundColor: 'white',
         color: 'black',
-        width: 400,
+        maxWidth: "none",
         fontSize: theme.typography.pxToRem(20),
         border: '1px solid #dadde9',
     },
@@ -35,8 +35,9 @@ function VolumeParams() {
                     <VolumeTooltip
                         title={
                             <React.Fragment>
-                                <em>Volume and Input</em> <br />
-                                <em>Test</em>
+                                <em>Input: Passes audio to delay (On/Off).</em> <br />
+                                <em>Volume: Sets output volume of processed signal.</em> <br />
+                                <em>Mix: Sets the balance between original and delayed signal.</em>
                             </React.Fragment>
                         }
                         arrow

@@ -12,7 +12,7 @@ const SpatialTooltip = styled(({ className, ...props }) => (
     [`& .${tooltipClasses.tooltip}`]: {
         backgroundColor: 'white',
         color: 'black',
-        width: 400,
+        maxWidth: "none",
         fontSize: theme.typography.pxToRem(20),
         border: '1px solid #dadde9',
     },
@@ -32,8 +32,7 @@ function SpatialParams() {
                     <SpatialTooltip
                     title={
                         <React.Fragment>
-                            <em>Spatial</em> <br />
-                            <em>Test</em>
+                            <em>Spread: Shifts the delays of left and right channels for stereo effect</em>
                         </React.Fragment>
                     }
                     arrow
