@@ -26,7 +26,8 @@ function Mix() {
                 min={0}
                 max={100}
                 value={mix} 
-                onChange={handleMixChange} 
+                onChange={handleMixChange}
+                sx={{color: "#f06a11"}} 
             />
         </div>
     );

@@ -40,8 +40,8 @@ function Preset(preset) {
 
     return (
         <>
-            <Grid item xs={3} marginX={'3em'}>
-                <Card sx={{marginx: "1em"}}>
+            <Grid item xs={3} marginX={'2em'}>
+                <Card sx={{marginx: "1em"}} variant='outlined'>
                 <p>{preset.preset.name}</p>
                 <p>{preset.preset.description}</p>
                 <button onClick={loadPreset} data-id={preset.preset.id}>Select Preset</button>

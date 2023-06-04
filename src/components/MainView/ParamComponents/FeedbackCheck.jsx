@@ -42,6 +42,7 @@ function FeedbackCheck() {
                 defaultChecked
                 id="feedbackCheck"
                 onChange={handleFeedbackCheckChange}
+                color="warning"
             />
         </>
     );

@@ -15,7 +15,8 @@ function BasicViewSliders() {
         <>
             <Box sx={{ width: .95, margin: "auto" }}>
                 <Card 
-                    sx={{ margin: "auto", width: 1, display: "inline-block", }}
+                    sx={{ margin: "auto", width: 1, display: "inline-block",}}
+                    style={{backgroundColor: '#545757', color: "whitesmoke"}}
                     variant="outlined"
                 >
                     <CardContent sx={{ mx: "1em" }}>

@@ -52,6 +52,7 @@ function Filter() {
                     step={1}
                     marks={marks}
                     onChange={handleFilterChange}
+                    sx={{color: "#f06a11"}}
                 />
             </div>
         </>

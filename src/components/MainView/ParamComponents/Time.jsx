@@ -27,6 +27,7 @@ function Time() {
                 max={100}
                 value={time} 
                 onChange={handleTimeChange} 
+                sx={{color: "#f06a11"}}
             />
         </div>
     );

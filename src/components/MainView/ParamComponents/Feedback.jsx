@@ -27,7 +27,8 @@ function Feedback() {
                 min={0}
                 max={100}
                 value={feedback} 
-                onChange={handleFeedbackChange} 
+                onChange={handleFeedbackChange}
+                sx={{color: "#f06a11"}}
             />
         </div>
     );

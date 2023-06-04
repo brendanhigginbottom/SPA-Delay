@@ -1,7 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 
-import StorePresetButton from "../SavePresetButton/StorePresetButton.jsx";
+import StorePresetButton from "../MainView/SavePresetButton/StorePresetButton.jsx";
 import StoreEditButton from "./StoreEditButton.jsx";
+import { Box } from "@mui/material";
 
 
 // form that SaveUserPreset button takes user to to enter name and desc of preset
@@ -37,7 +38,7 @@ function SavePreset() {
     }
 
     return (
-        <>
+        <Box sx={{marginLeft: "1em"}}>
             {
                 editToggle === false ? (
                     <h1>Save Preset</h1>
@@ -49,6 +50,7 @@ function SavePreset() {
                     id="presetName" 
                     onChange={handleNameChange} 
                     defaultValue={name}
+                    required
                 />
                 <p>{name.length}/100</p>
                 <br />
@@ -60,6 +62,7 @@ function SavePreset() {
                     cols="50"
                     onChange={handleDescChange}
                     defaultValue={desc}
+                    required
                 />
                 <p>{desc.length}/1000</p>
                 <br />
@@ -70,7 +73,7 @@ function SavePreset() {
                         <StoreEditButton />
                 }
                 
-        </>
+        </Box>
     );
 }
 
