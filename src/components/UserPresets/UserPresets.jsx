@@ -6,6 +6,7 @@ import Preset from './Preset.jsx';
 // /userpreset buttons import (DELETE and PUT)
 import DeletePresetButton from './DeletePresetButton.jsx';
 import EditPresetButton from './EditPresetButton.jsx';
+import { Grid } from '@mui/material';
 
 // Displays user's saved presets which onClick will navigate user to 
 // Delay view and populate delay with stored values
@@ -53,6 +54,7 @@ function UserPresets() {
     return(
         <>
             <h1>My Presets</h1>
+            <Grid container spacing={2} sx={{marginx: "1em"}}>
             {
                 userPresets.map(preset => {
                     return (
@@ -61,22 +63,9 @@ function UserPresets() {
                             preset={preset}
                         />
                     )
-                    // return (
-                    //     <div key={preset.id}>
-                    //         <p>{preset.name}</p>
-                    //         <p>{preset.description}</p>
-                    //         <button onClick={loadPreset} data-id={preset.id}>Select Preset</button>
-                    //         <br />
-                    //         <DeletePresetButton 
-                    //             presetId={preset.id}
-                    //         />
-                    //         <EditPresetButton 
-                    //             presetId={preset}
-                    //         />
-                    //     </div>
-                    // )
                 })
             }
+            </Grid>
         </>
     );
 }

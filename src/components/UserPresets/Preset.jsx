@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 // /userpreset buttons import (DELETE and PUT)
 import DeletePresetButton from './DeletePresetButton.jsx';
 import EditPresetButton from './EditPresetButton.jsx';
+import { Card, Grid } from '@mui/material';
 
 // Individual user presets
 function Preset(preset) {
@@ -39,8 +40,8 @@ function Preset(preset) {
 
     return (
         <>
-            <h1>test</h1>
-            <div>
+            <Grid item xs={3} marginX={'3em'}>
+                <Card sx={{marginx: "1em"}}>
                 <p>{preset.preset.name}</p>
                 <p>{preset.preset.description}</p>
                 <button onClick={loadPreset} data-id={preset.preset.id}>Select Preset</button>
@@ -51,8 +52,8 @@ function Preset(preset) {
                 <EditPresetButton
                     presetId={preset.preset}
                 />
-            </div>
-
+                </Card>
+            </Grid>
         </>
     );
 }
