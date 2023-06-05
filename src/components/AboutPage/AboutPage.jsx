@@ -9,7 +9,7 @@ function AboutPage() {
   return (
     <div className="container">
       <div>
-        <p>SPA-Delay is a Single Page Application (SPA) and a Signal-Processing Application (SPA). It uses React, Axios, PG, and MUI alongside the WebAUdio API and the Filter Delay from RNBO by Cycling '74 for signal processing.</p>
+        <p>SPA-Delay is a Single Page Application (SPA) and a Signal-Processing Application (SPA). It uses React, Axios, PG, and MUI alongside the WebAudio API and the Filter Delay from RNBO by Cycling '74 for signal processing.</p>
       </div>
     </div>
   );
