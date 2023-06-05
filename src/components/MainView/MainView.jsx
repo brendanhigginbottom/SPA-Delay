@@ -78,10 +78,11 @@ function WebAudioTest3() {
                     label="Sound"
                     onChange={handleAudioSelection}
                 >
-                    <MenuItem value="./export/media/SPADelayTest.mp3">Test 1</MenuItem>
-                    <MenuItem value="./export/media/SPADelayTest2.mp3">Test 2</MenuItem>
-                    <MenuItem value="./export/media/SPADelayTest3.mp3">Test 3</MenuItem>
-                    <MenuItem value="./export/media/SPADelayTest4.mp3">Test 4</MenuItem>
+                    <MenuItem value="./export/media/RandomizedArp.mp3">Randomized Arpeggio</MenuItem>
+                    <MenuItem value="./export/media/DrumLoop.mp3">Drum Loop</MenuItem>
+                    <MenuItem value="./export/media/Wide-BandWebSDR.mp3">HAM Radio Operators</MenuItem>
+                    <MenuItem value="./export/media/piano3.mp3">Piano</MenuItem>
+                    <MenuItem value="./export/media/092421TrackArchive.mp3">Full Track Clip</MenuItem>
                 </Select>
                 </Box>
                 <br />
