@@ -13,7 +13,7 @@ function AboutPage() {
       <div>
         <p>
           SPA-Delay is a Single Page Application (SPA) and a Signal-Processing Application (SPA). 
-          It uses React, Axios, PG, and MUI alongside the&nbsp;
+          It uses React, Redux and Sagas, Axios, PG, and MUI alongside the&nbsp;
            <a target='_blank' href='https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API'>WebAudio API</a> 
            &nbsp;and the Filter Delay from&nbsp;
            <a target='_blank' href='https://rnbo.cycling74.com/'>RNBO</a> 
