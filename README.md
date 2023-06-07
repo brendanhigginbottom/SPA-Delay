@@ -53,7 +53,6 @@ WebAudio API
 RNBO by Cycling '74
 
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
 
 [Cycling '74 License for Max-Generated Code for Export](https://support.cycling74.com/hc/en-us/articles/10730031661587-Cycling-74-License-for-Max-Generated-Code-for-Export)
 
