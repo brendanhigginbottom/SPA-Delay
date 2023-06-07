@@ -10,8 +10,10 @@ The Signal Processing App - Delay (SPA - Delay) is a website targeted for deskto
 
 To see the fully functional site, please visit: [DEPLOYED VERSION OF APP](www.heroku.com)
 
-## Screen Shot
+## Screen Shots
+<img width="1485" alt="Screenshot 2023-06-07 at 5 51 23 PM" src="https://github.com/brendanhigginbottom/SPA-Delay/assets/111456731/b0da0bb2-4ae9-4911-aa34-84d909faf440">
 
+<img width="757" alt="Screenshot 2023-06-07 at 5 51 56 PM" src="https://github.com/brendanhigginbottom/SPA-Delay/assets/111456731/f1c6a8a3-0ffd-417e-824a-6a26cdcc044c">
 
 ### Prerequisites
 
