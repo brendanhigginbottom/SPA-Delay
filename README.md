@@ -8,7 +8,7 @@ _Duration: 3 Week Sprint_
 
 The Signal Processing App - Delay (SPA - Delay) is a website targeted for desktop that allows a user to adjust the settings of a delay line and hear one of several audio files processed by the delay line. In the name of immediacey, the user is taken to the main interface where the delay settings can be manipulated. If the user likes the current setting of the delay line, they can choose to save a preset, give it a name and description. The user will be asked to login or register if they are not logged in when attempting to save a preset. This preset is saved to the logged in user’s profile. The nav bar will have a tab where the user can select one of their presets, which takes the user back to the main page with those settings selected. A user can edit the name anddescription of any of their presets. 
 
-To see the fully functional site, please visit: [DEPLOYED VERSION OF APP](www.heroku.com)
+To see the fully functional site, please visit: [DEPLOYED VERSION OF APP](https://mysterious-forest-94897.herokuapp.com/#/main)
 
 ## Screen Shots
 <img width="1485" alt="Screenshot 2023-06-07 at 5 51 23 PM" src="https://github.com/brendanhigginbottom/SPA-Delay/assets/111456731/b0da0bb2-4ae9-4911-aa34-84d909faf440">
